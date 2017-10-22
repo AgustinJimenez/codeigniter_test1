@@ -53,6 +53,4 @@ $route['default_controller'] = 'home/welcome';
 $route['(:any)'] = 'home/welcome/$1';
 //$route['404_override'] = '';
 //$route['translate_uri_dashes'] = FALSE;
-
-
-$route['admin/login'] = 'admin/auth/login/login_page';
+$route['admin/dashboard'] = 'admin/dashboard';

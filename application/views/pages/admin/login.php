@@ -34,28 +34,31 @@
   </div>
   <!-- /.login-logo -->
   <div class="login-box-body">
-    <p class="login-box-msg">Sign in to start your session</p>
+  <div id="infoMessage"><?php echo $message;?></div>
+    <p class="login-box-msg" id="infoMessage">Sign in to start your session</p>
 
-    <form action="../../index2.html" method="post">
+    <?= form_open("auth/login") ?>
       <div class="form-group has-feedback">
-        <input type="email" class="form-control" placeholder="Email">
+        <input type="email" class="form-control" name="identity" placeholder="Email">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
       </div>
       <div class="form-group has-feedback">
-        <input type="password" class="form-control" placeholder="Password">
+        <input type="password" class="form-control" name="password" placeholder="Password">
         <span class="glyphicon glyphicon-lock form-control-feedback"></span>
       </div>
       <div class="row">
         <div class="col-xs-8">
-        <a href="register.html" class="text-center">Register a new membership</a>
+          <a href="register.html" class="text-center">Register a new membership</a>
+          <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
           <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
         </div>
         <!-- /.col -->
       </div>
-    </form>
+      <?= form_close() ?>
 
     <!-- /.social-auth-links -->
     

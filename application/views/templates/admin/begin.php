@@ -23,3 +23,5 @@
 <?= $this->load->view('templates/admin/main-sidebar', null, true); ?>
  <div class="content-wrapper">
  <section class="content container-fluid">
+ <div class="row">
+ <div class="col-xs-12">
