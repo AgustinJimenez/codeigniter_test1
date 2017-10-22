@@ -1,11 +1,17 @@
 <?php
+
 class MY_Controller extends CI_Controller 
 {
 
     function __construct()
     {
-        parent::__construct();
+        parent::__construct(); 
         $this->load->helper('url');
+    }
+
+    protected function to_simple_template( $view_path, $data = [] )
+    {
+        $this->load_template( 'templates/simple/index', $view_path, $data );
     }
 
     protected function to_admin_template( $view_path, $data = [] )
@@ -20,13 +26,5 @@ class MY_Controller extends CI_Controller
 
         $this->load->view( $template_path, ['content' => $this->load->view( $view_path, $data, true)]);
     }
-
-
-
-
-
-
-
-
-    
+ 
 }

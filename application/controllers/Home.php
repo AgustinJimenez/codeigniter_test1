@@ -4,6 +4,6 @@ class Home extends MY_Controller
 
     public function welcome( )
     {
-        $this->to_admin_template( 'pages/home/welcome_message' );
+        $this->to_simple_template( 'pages/home/welcome_message' );
     }
 }
