@@ -1,8 +1,10 @@
 - set database configuration: \application\config\database.php
 - create your database
 - set migration_enabled to true: \application\config\migration.php
-- got to url '/migrate/index' to create migrations table
-- To run  001_install_ion_auth you need to change 'migration_version' on '\application\config\migration' to 1
+- on your browser load url '/migrate/index' to create migrations table
+- To run  001_install_ion_auth you need to change 'migration_version' on '\application\config\migration' to 1 and then load again '/migrate/index'
 - set migration_enabled to false: \application\config\migration.php
+- set 'migration_version' to 0
+- login
 Email: admin@admin.com
 Password: password

@@ -1,4 +1,14 @@
 
+
+<div class="container-fluid"> 
+<?php if( isset($message) ): ?> 
+      <div class="alert alert-warning fade in" id="infoMessage"> 
+            <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a> 
+            <?= $message ?> 
+      </div> 
+<?php endif;?> 
+</div> 
+
 <div class="box box-primary">
       <div class="box-header">
             <h1><?= lang('create_user_heading');?></h1>
