@@ -1,3 +1,4 @@
+<?= $this->load->view('templates/admin/message', null, true); ?>
 
       <div class="box box-primary">
 

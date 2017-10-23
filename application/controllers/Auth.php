@@ -596,7 +596,7 @@ class Auth extends CI_Controller {
 				    $this->session->set_flashdata('message', $this->ion_auth->messages() );
 				    if ($this->ion_auth->is_admin())
 					{
-						redirect('auth', 'refresh');
+						$this->index();
 					}
 					else
 					{
@@ -610,7 +610,7 @@ class Auth extends CI_Controller {
 				    $this->session->set_flashdata('message', $this->ion_auth->errors() );
 				    if ($this->ion_auth->is_admin())
 					{
-						redirect('auth', 'refresh');
+						$this->index();
 					}
 					else
 					{
@@ -692,7 +692,7 @@ class Auth extends CI_Controller {
 				// check to see if we are creating the group
 				// redirect them back to the admin page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect("auth", 'refresh');
+				$this->index();
 			}
 		}
 		else
