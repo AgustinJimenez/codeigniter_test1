@@ -7,7 +7,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct(); 
         $this->load->helper('url');
-        $this->load->helper('var_dump_helper');
+        //$this->load->helper('var_dump_helper');
     }
 
     protected function to_simple_template( $view_path, $data = [] )

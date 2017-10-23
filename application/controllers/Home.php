@@ -2,7 +2,7 @@
 class Home extends MY_Controller 
 {
 
-    public function welcome( )
+    public function index()
     {
         $this->to_simple_template( 'pages/home/welcome_message' );
     }

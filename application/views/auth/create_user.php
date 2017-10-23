@@ -1,57 +1,74 @@
-<h1><?php echo lang('create_user_heading');?></h1>
-<p><?php echo lang('create_user_subheading');?></p>
+<?= $this->load->view('templates/admin/begin', null, true); ?>
 
-<div id="infoMessage"><?php echo $message;?></div>
-
-<?php echo form_open("auth/create_user");?>
-
-      <p>
-            <?php echo lang('create_user_fname_label', 'first_name');?> <br />
-            <?php echo form_input($first_name);?>
-      </p>
-
-      <p>
-            <?php echo lang('create_user_lname_label', 'last_name');?> <br />
-            <?php echo form_input($last_name);?>
-      </p>
-      
-      <?php
-      if($identity_column!=='email') {
-          echo '<p>';
-          echo lang('create_user_identity_label', 'identity');
-          echo '<br />';
-          echo form_error('identity');
-          echo form_input($identity);
-          echo '</p>';
-      }
-      ?>
-
-      <p>
-            <?php echo lang('create_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
-      </p>
-
-      <p>
-            <?php echo lang('create_user_email_label', 'email');?> <br />
-            <?php echo form_input($email);?>
-      </p>
-
-      <p>
-            <?php echo lang('create_user_phone_label', 'phone');?> <br />
-            <?php echo form_input($phone);?>
-      </p>
-
-      <p>
-            <?php echo lang('create_user_password_label', 'password');?> <br />
-            <?php echo form_input($password);?>
-      </p>
-
-      <p>
-            <?php echo lang('create_user_password_confirm_label', 'password_confirm');?> <br />
-            <?php echo form_input($password_confirm);?>
-      </p>
+<div class="box box-primary">
+      <div class="box-header">
+            <h1><?= lang('create_user_heading');?></h1>
+            <p><?= lang('create_user_subheading');?></p>
+      </div>
 
 
-      <p><?php echo form_submit('submit', lang('create_user_submit_btn'));?></p>
+      <div class="box-body">
 
-<?php echo form_close();?>
+            <?= form_open("auth/create_user");?>
+
+                  <div class="row">
+                        <div class="col-md-3 form-group">
+                              <?= lang('create_user_fname_label', 'first_name');?> 
+                              <?= form_input($first_name, null, 'class="form-control"');?>
+                        </div>
+                        <div class="col-md-3 form-group">
+                              <?= lang('create_user_lname_label', 'last_name');?> 
+                              <?= form_input($last_name, null, 'class="form-control"');?>
+                        </div>
+                        <?php
+                        if($identity_column!=='email') 
+                        {
+                        echo lang('create_user_identity_label', 'identity');
+                        echo '';
+                        echo form_error('identity');
+                        echo form_input($identity, null, 'class="form-control"');
+                        }
+                        ?>
+
+                        <div class="col-md-3 form-group">
+                              <?= lang('create_user_company_label', 'company');?> 
+                              <?= form_input($company, null, 'class="form-control"');?>
+                        </div>
+
+                        <div class="col-md-3 form-group">
+                              <?= lang('create_user_phone_label', 'phone');?> 
+                              <?= form_input($phone, null, 'class="form-control"');?>
+                        </div>
+
+                  </div>
+
+                  <div class="row">
+
+                        <div class="col-md-3 form-group">
+                              <?= lang('create_user_email_label', 'email');?> 
+                              <?= form_input($email, null, 'class="form-control"');?>
+                        </div>
+
+                        
+
+                        <div class="col-md-3 form-group">
+                              <?= lang('create_user_password_label', 'password');?> 
+                              <?= form_input($password, null, 'class="form-control"');?>
+                        </div>
+
+                        <div class="col-md-3 form-group">
+                              <?= lang('create_user_password_confirm_label', 'password_confirm');?> 
+                              <?= form_input($password_confirm, null, 'class="form-control"');?>
+                        </div>
+
+                  </div>
+
+
+                  <?= form_submit('submit', lang('create_user_submit_btn'), 'class="btn btn-primary"');?>
+
+            <?= form_close();?>
+
+      </div>
+</div>
+
+<?= $this->load->view('templates/admin/end', null, true); ?>

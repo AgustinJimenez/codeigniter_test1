@@ -1,11 +1,12 @@
 <?= $this->load->view('templates/admin/begin', null, true); ?>
+
+
 <div class="box box-primary">
 	<div class="box-header">
 		<h3 class="box-title"><?= lang('index_heading');?></h3>
-		<div id="infoMessage"><?= $message;?></div>
 		<div class="pull-right">
-		<?= anchor('auth/create_user', lang('index_create_user_link'), 'class="btn btn-primary"')?>  
-		<?= anchor('auth/create_group', lang('index_create_group_link'), 'class="btn btn-primary"')?>
+		<?= anchor('admin/users/create', lang('index_create_user_link'), 'class="btn btn-primary"')?>  
+		<?= anchor('admin/groups/create', lang('index_create_group_link'), 'class="btn btn-primary"')?>
 		</div>
 	</div>
 
@@ -33,7 +34,7 @@
 							<?php endforeach?>
 						</td>
 						<td><?= ($user->active) ? anchor("auth/deactivate/".$user->id, lang('index_active_link')) : anchor("auth/activate/". $user->id, lang('index_inactive_link'));?></td>
-						<td><?= anchor("auth/edit_user/".$user->id, 'Edit') ;?></td>
+						<td><?= anchor("admin/users/{$user->id}/edit", 'Edit') ;?></td>
 					</tr>
 				<?php endforeach;?>
 			</tbody>
@@ -52,4 +53,6 @@
 	</div>
 
 </div>
+
+
 <?= $this->load->view('templates/admin/end', null, true); ?>

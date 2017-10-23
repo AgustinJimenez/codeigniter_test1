@@ -1,70 +1,81 @@
 <?= $this->load->view('templates/admin/begin', null, true); ?>
+<div class="box box-primary">
+      <div class="box-header">
+            <h1><?= lang('edit_user_heading');?></h1>
+            <?= lang('edit_user_subheading');?>
 
-<h1><?php echo lang('edit_user_heading');?></h1>
-<p><?php echo lang('edit_user_subheading');?></p>
+      </div>
 
-<div id="infoMessage"><?php echo $message;?></div>
+      <div class="box-body">
 
-<?php echo form_open(uri_string());?>
+            <?= form_open(uri_string());?>
+                  <div class="row">
+                        <div class="form-group col-md-3">
+                              <?= lang('edit_user_fname_label', 'first_name');?> <br />
+                              <?= form_input($first_name, null, 'class="form-control"');?>
+                        </div>
 
-      <p>
-            <?php echo lang('edit_user_fname_label', 'first_name');?> <br />
-            <?php echo form_input($first_name);?>
-      </p>
+                        <div class="form-group col-md-3">
+                              <?= lang('edit_user_lname_label', 'last_name');?> <br />
+                              <?= form_input($last_name, null, 'class="form-control"');?>
+                        </div>
 
-      <p>
-            <?php echo lang('edit_user_lname_label', 'last_name');?> <br />
-            <?php echo form_input($last_name);?>
-      </p>
+                        <div class="form-group col-md-3">
+                              <?= lang('edit_user_company_label', 'company');?> <br />
+                              <?= form_input($company, null, 'class="form-control"');?>
+                        </div>
 
-      <p>
-            <?php echo lang('edit_user_company_label', 'company');?> <br />
-            <?php echo form_input($company);?>
-      </p>
+                        <div class="form-group col-md-3">
+                              <?= lang('edit_user_phone_label', 'phone');?> <br />
+                              <?= form_input($phone, null, 'class="form-control"');?>
+                        </div>
+                  </div>
 
-      <p>
-            <?php echo lang('edit_user_phone_label', 'phone');?> <br />
-            <?php echo form_input($phone);?>
-      </p>
+                  <div class="row">
+                        <div class="form-group col-md-3">
+                              <?= lang('edit_user_password_label', 'password');?> <br />
+                              <?= form_input($password, null, 'class="form-control"');?>
+                        </div>
 
-      <p>
-            <?php echo lang('edit_user_password_label', 'password');?> <br />
-            <?php echo form_input($password);?>
-      </p>
+                        <div class="form-group col-md-3">
+                              <?= lang('edit_user_password_confirm_label', 'password_confirm');?><br />
+                              <?= form_input($password_confirm, null, 'class="form-control"');?>
+                        </div>
 
-      <p>
-            <?php echo lang('edit_user_password_confirm_label', 'password_confirm');?><br />
-            <?php echo form_input($password_confirm);?>
-      </p>
+                        <?php if ($this->ion_auth->is_admin()): ?>
+                              
+                              <div class="form-group col-md-3">
+                                    <h3><?= lang('edit_user_groups_heading');?></h3>
+                                    <?php foreach ($groups as $group):?>
+                                          
+                                          <label class="checkbox">
+                                                <?php
+                                                      $gID=$group['id'];
+                                                      $checked = null;
+                                                      $item = null;
+                                                      foreach($currentGroups as $grp) {
+                                                      if ($gID == $grp->id) {
+                                                            $checked= ' checked="checked"';
+                                                      break;
+                                                      }
+                                                      }
+                                                ?>
+                                                <input type="checkbox" name="groups[]" value="<?= $group['id'];?>"<?= $checked;?>>
+                                                <?= htmlspecialchars($group['name'],ENT_QUOTES,'UTF-8');?>
+                                          </label>
+                                          
+                                    <?php endforeach?>
+                              </div>
+                        <?php endif ?>
+                  </div>
 
-      <?php if ($this->ion_auth->is_admin()): ?>
+                  <?= form_hidden('id', $user->id);?>
+                  <?= form_hidden($csrf); ?>
 
-          <h3><?php echo lang('edit_user_groups_heading');?></h3>
-          <?php foreach ($groups as $group):?>
-              <label class="checkbox">
-              <?php
-                  $gID=$group['id'];
-                  $checked = null;
-                  $item = null;
-                  foreach($currentGroups as $grp) {
-                      if ($gID == $grp->id) {
-                          $checked= ' checked="checked"';
-                      break;
-                      }
-                  }
-              ?>
-              <input type="checkbox" name="groups[]" value="<?php echo $group['id'];?>"<?php echo $checked;?>>
-              <?php echo htmlspecialchars($group['name'],ENT_QUOTES,'UTF-8');?>
-              </label>
-          <?php endforeach?>
+                  <?= form_submit('submit', lang('edit_user_submit_btn'), 'class="btn btn-primary"');?>
 
-      <?php endif ?>
-
-      <?php echo form_hidden('id', $user->id);?>
-      <?php echo form_hidden($csrf); ?>
-
-      <p><?php echo form_submit('submit', lang('edit_user_submit_btn'));?></p>
-
-<?php echo form_close();?>
+            <?= form_close();?>
+      </div>
+</div>
 
 <?= $this->load->view('templates/admin/end', null, true); ?>

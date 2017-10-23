@@ -21,7 +21,7 @@ class Auth extends CI_Controller {
 		if (!$this->ion_auth->logged_in())
 		{
 			// redirect them to the login page
-			redirect( site_url('auth/login'), 'refresh');
+			redirect( 'auth/login', 'refresh');
 		}
 		elseif (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
 		{
@@ -71,7 +71,7 @@ class Auth extends CI_Controller {
 				// if the login was un-successful
 				// redirect them back to the login page
 				$this->session->set_flashdata('message', $this->ion_auth->errors());
-				redirect( site_url('auth/login'), 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+				redirect( 'auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		}
 		else
@@ -104,7 +104,7 @@ class Auth extends CI_Controller {
 
 		// redirect them to the login page
 		$this->session->set_flashdata('message', $this->ion_auth->messages());
-		redirect('auth/login', 'refresh');
+		redirect('/', 'local');
 	}
 
 	// change password
@@ -458,7 +458,7 @@ class Auth extends CI_Controller {
             // check to see if we are creating the user
             // redirect them back to the admin page
             $this->session->set_flashdata('message', $this->ion_auth->messages());
-            redirect("auth", 'refresh');
+            redirect("/admin/users", 'refresh');
         }
         else
         {

@@ -1,20 +1,30 @@
-<h1><?php echo lang('create_group_heading');?></h1>
-<p><?php echo lang('create_group_subheading');?></p>
+<?= $this->load->view('templates/admin/begin', null, true); ?>
+      <div class="box box-primary">
 
-<div id="infoMessage"><?php echo $message;?></div>
+            <div class="box-header">      
+                  <h1><?= lang('create_group_heading');?></h1>
+                  <p><?= lang('create_group_subheading');?></p>
 
-<?php echo form_open("auth/create_group");?>
+            </div>
 
-      <p>
-            <?php echo lang('create_group_name_label', 'group_name');?> <br />
-            <?php echo form_input($group_name);?>
-      </p>
+            <div class="box-body">
+                  
+                  <?= form_open("auth/create_group");?>
+                        <div class="row">
+                              <div class="col-md-3 form-group">
+                                    <?= lang('create_group_name_label', 'group_name');?> <br />
+                                    <?= form_input($group_name, null, 'class="form-control"');?>
+                              </div>
+     
+                              <div class="col-md-3 form-group">
+                                    <?= lang('create_group_desc_label', 'description');?> <br />
+                                    <?= form_input($description, null, 'class="form-control"');?>
+                              </div>
+                        </div>
+                              <?= form_submit('submit', lang('create_group_submit_btn'), 'class="btn btn-primary"');?>
+                  <?= form_close();?>
 
-      <p>
-            <?php echo lang('create_group_desc_label', 'description');?> <br />
-            <?php echo form_input($description);?>
-      </p>
+            </div>  
+      </div>
 
-      <p><?php echo form_submit('submit', lang('create_group_submit_btn'));?></p>
-
-<?php echo form_close();?>
+<?= $this->load->view('templates/admin/end', null, true); ?>
