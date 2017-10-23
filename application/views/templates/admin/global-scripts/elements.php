@@ -5,5 +5,6 @@
     var TEMPLATE_VISITED_URLS = [];
 
     var TEMPLATE_BACK_BUTTON = $("#template-back-button");
-    
+
+    var TEMPLATE_REFRESH_BUTTON = $("#template-refresh-button");
 </script>

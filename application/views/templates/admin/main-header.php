@@ -10,11 +10,15 @@
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
           
-          
-          <!-- Tasks Menu -->
           <li>
             <a href="#" id="template-back-button">
               <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i>
+            </a>
+          </li>
+
+          <li>
+            <a href="#" id="template-refresh-button">
+              <i class="fa fa-refresh fa-1x" aria-hidden="true"></i>
             </a>
           </li>
           <!-- User Account Menu -->

@@ -722,26 +722,22 @@ class Auth extends CI_Controller {
 	// edit a group
 	public function edit_group($id)
 	{
+		//var_dump( "id=>".$id );
 		// bail if no group id given
 		if(!$id || empty($id))
-		{
 			redirect('auth', 'refresh');
-		}
+		
+		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
+			redirect('auth', 'refresh');
 
 		$this->data['title'] = $this->lang->line('edit_group_title');
-
-		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
-		{
-			redirect('auth', 'refresh');
-		}
-
 		$group = $this->ion_auth->group($id)->row();
 
 		// validate form input
 		$this->form_validation->set_rules('group_name', $this->lang->line('edit_group_validation_name_label'), 'required|alpha_dash');
 
+		//if user has saved 
 		if (isset($_POST) && !empty($_POST))
-		{
 			if ($this->form_validation->run() === TRUE)
 			{
 				$group_update = $this->ion_auth->update_group($id, $_POST['group_name'], $_POST['group_description']);
@@ -754,9 +750,12 @@ class Auth extends CI_Controller {
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
 				}
-				redirect("auth", 'refresh');
+
+				//var_dump( "_POST=>", $_POST );
+				//var_dump( "group_update=>".$group_update );
+				$this->index();
 			}
-		}
+		
 
 		// set the flash data error message if there is one
 		$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
@@ -779,8 +778,9 @@ class Auth extends CI_Controller {
 			'type'  => 'text',
 			'value' => $this->form_validation->set_value('group_description', $group->description),
 		);
-
-		$this->_render_page('auth/edit_group', $this->data);
+		if ( empty($_POST) )
+			$this->_render_page('auth/edit_group', $this->data);
+			//var_dump( "_render_page auth/edit_group =>", $this->data );
 	}
 
 

@@ -23,6 +23,11 @@
         template_back_button_was_clicked();
     });
 
+    TEMPLATE_REFRESH_BUTTON.click(function()
+    {
+        f5_was_clicked();
+    });
+
     document.onkeydown = checkKey;
 
     function checkKey(e) 
