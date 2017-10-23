@@ -18,3 +18,9 @@ input[type='radio']
     transform: scale(1.8);
     margin: 0.5em; 
 }
+
+.alert-warning
+{
+    background-image: -webkit-gradient(linear,left top,left bottom,from(#edb55c),to(#e08e0b));
+
+}
