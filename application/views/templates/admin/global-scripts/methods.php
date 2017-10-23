@@ -96,7 +96,7 @@
     function template_change_content_container( html, url )
     {
 
-        TEMPLATE_CONTENT_CONTAINER.hide().html( html ).fadeIn('slow');
+        TEMPLATE_CONTENT_CONTAINER.stop().hide().html( html ).fadeIn('slow');
         if(url)
             template_add_visited_url(url);
     }

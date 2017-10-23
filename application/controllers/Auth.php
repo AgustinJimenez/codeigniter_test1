@@ -354,7 +354,7 @@ class Auth extends CI_Controller {
 		{
 			// redirect them to the auth page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			$this->index();
 		}
 		else
 		{
@@ -384,7 +384,7 @@ class Auth extends CI_Controller {
 			// insert csrf check
 			$this->data['csrf'] = $this->_get_csrf_nonce();
 			$this->data['user'] = $this->ion_auth->user($id)->row();
-
+			
 			$this->_render_page('auth/deactivate_user', $this->data);
 		}
 		else
@@ -402,11 +402,12 @@ class Auth extends CI_Controller {
 				if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin())
 				{
 					$this->ion_auth->deactivate($id);
+					$this->session->set_flashdata('message', "User has benn desactivated.");
 				}
 			}
 
 			// redirect them back to the auth page
-			redirect('auth', 'refresh');
+			$this->index();
 		}
 	}
 
