@@ -12,7 +12,11 @@
           
           
           <!-- Tasks Menu -->
-          
+          <li>
+            <a href="#" id="template-back-button">
+              <i class="fa fa-arrow-left fa-1x" aria-hidden="true"></i>
+            </a>
+          </li>
           <!-- User Account Menu -->
           <li class="dropdown user user-menu">
             <!-- Menu Toggle Button -->
@@ -37,9 +41,9 @@
               <!-- Menu Body -->
               <!-- Menu Footer-->
               <li class="user-footer">
-                <div class="rowt">
-                  <a href="<?= site_url('/auth/logout') ?>" class="btn btn-danger btn-flat form-control">Sign out</a>
-                </div>
+
+                  <a href="<?= site_url('/auth/logout') ?>" class="btn btn-danger" style="background-color: #dd4b39!important; color: white!important;">Sign out</a>
+
               </li>
             </ul>
           </li>

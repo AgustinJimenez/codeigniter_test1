@@ -13,6 +13,11 @@
         return prevent;
     }
 
+    function template_back_button_was_clicked()
+    {
+        left_arrow_was_clicked();
+    }
+
     function template_get( url )
     {
         $.get( url, function( data ) 
@@ -56,7 +61,7 @@
     {
         template_drop_last_url();
         var last_url = template_get_last_url_visited();
-        console.log(TEMPLATE_VISITED_URLS, 'last= '+last_url);
+        //console.log(TEMPLATE_VISITED_URLS, 'last= '+last_url);
         if(last_url)
             template_get( last_url );
     }

@@ -18,6 +18,11 @@
             template_post( $(this).attr('action'), $(this).serialize() );
     });
 
+    TEMPLATE_BACK_BUTTON.click(function()
+    {
+        template_back_button_was_clicked();
+    });
+
     document.onkeydown = checkKey;
 
     function checkKey(e) 
