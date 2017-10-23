@@ -1,4 +1,4 @@
-<?= $this->load->view('templates/admin/begin', null, true); ?>
+
 <div class="box box-primary">
       <div class="box-header">
             <h1><?= lang('edit_user_heading');?></h1>
@@ -77,5 +77,3 @@
             <?= form_close();?>
       </div>
 </div>
-
-<?= $this->load->view('templates/admin/end', null, true); ?>

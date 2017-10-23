@@ -1,4 +1,3 @@
-<?= $this->load->view('templates/admin/begin', null, true); ?>
 
 <div class="box box-primary">
       <div class="box-header">
@@ -71,4 +70,3 @@
       </div>
 </div>
 
-<?= $this->load->view('templates/admin/end', null, true); ?>
