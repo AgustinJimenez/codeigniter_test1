@@ -6,6 +6,7 @@ class Auth extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->database();
+		$this->load->helper('custom_form_helper');
 		$this->load->library(array('ion_auth','form_validation'));
 		$this->load->helper(array('url','language'));
 

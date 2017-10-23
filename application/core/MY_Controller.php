@@ -36,6 +36,8 @@ class AdminController extends MY_Controller
     {
        parent::__construct();
        $this->load->library('ion_auth');
+       $this->load->helper('custom_form_helper');
+
        if( !$this->ion_auth->logged_in() )
         redirect( site_url('/auth/login'), 'local');
     }
