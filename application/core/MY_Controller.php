@@ -7,7 +7,7 @@ class MY_Controller extends CI_Controller
     {
         parent::__construct(); 
         $this->load->helper('url');
-        //$this->load->helper('var_dump_helper');
+        $this->load->helper('var_dump_helper');
     }
 
     protected function to_simple_template( $view_path, $data = [] )
@@ -37,9 +37,9 @@ class AdminController extends MY_Controller
        parent::__construct();
        $this->load->library('ion_auth');
        $this->load->helper('custom_form_helper');
-
+       $this->lang->load('auth_lang');
        if( !$this->ion_auth->logged_in() )
-        redirect( site_url('/auth/login'), 'local');
+            redirect( site_url('/auth/login'), 'local');
     }
 
 }
