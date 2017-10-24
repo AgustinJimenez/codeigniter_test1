@@ -1,11 +1,8 @@
-
+<?= $this->load->view('templates/admin/message', null, true); ?>
 <div class="box">
       <div class="box-header">
             <h1><?= lang('edit_user_heading');?></h1>
             <?= lang('edit_user_subheading');?>
-            <div class="btn-group pull-right">
-                  <a class="btn btn-primary">new password</a>
-            </div>
       </div>
 
       <div class="box-body">

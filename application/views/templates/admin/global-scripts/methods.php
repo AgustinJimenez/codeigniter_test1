@@ -96,6 +96,20 @@
         var last_url = template_get_last_url_visited();
         if(last_url)
             template_get( last_url );
+
+        refresh_icon_animate();
+    }
+
+    function refresh_icon_animate()
+    {
+        //console.log( TEMPLATE_REFRESH_BUTTON.children("i").attr("class") );
+        //TEMPLATE_REFRESH_BUTTON.children("i").addClass('fa-spin').delay(4000).removeClass('fa-spin');
+        TEMPLATE_REFRESH_BUTTON.children("i").addClass('fa-spin');
+        setTimeout(function()
+        {
+            TEMPLATE_REFRESH_BUTTON.children("i").removeClass('fa-spin');
+        },1000);
+        
     }
 
 
@@ -104,6 +118,13 @@
         TEMPLATE_CONTENT_CONTAINER.stop().hide().html( html ).fadeIn('slow');
         if(url)
             template_add_visited_url(url);
+
+        set_input_autocomplete_off();
+    }
+
+    function set_input_autocomplete_off()
+    {
+        $("input").attr("autocomplete", 'off');
     }
 
 </script>

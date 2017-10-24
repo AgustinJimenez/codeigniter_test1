@@ -11,7 +11,7 @@ class Auth extends CI_Controller {
 		$this->load->helper(array('url','language'));
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
-
+		$this->session->set_flashdata('message', null);
 		$this->lang->load('auth');
 	}
 
@@ -166,7 +166,7 @@ class Auth extends CI_Controller {
 			{
 				//if the password was successfully changed
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				$this->logout();
+				$this->index();
 			}
 			else
 			{

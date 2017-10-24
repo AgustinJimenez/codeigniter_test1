@@ -59,7 +59,6 @@ $route['admin/dashboard'] = 'backend/dashboard';
 $route['admin/users'] = 'auth/index';
 $route['admin/users/create'] = 'auth/create_user';
 $route['admin/users/(:num)/edit'] = 'auth/edit_user/$1';
-
-
 $route['admin/groups/create'] = 'auth/create_group';
+$route['admin/change_password'] = 'auth/change_password';
 

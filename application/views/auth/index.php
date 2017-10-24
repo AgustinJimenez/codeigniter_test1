@@ -4,8 +4,10 @@
 	<div class="box-header">
 		<h3 class="box-title"><?= lang('index_heading');?></h3>
 		<div class="pull-right">
-		<?= anchor('admin/users/create', lang('index_create_user_link'), 'class="btn btn-primary"')?>  
-		<?= anchor('admin/groups/create', lang('index_create_group_link'), 'class="btn btn-primary"')?>
+		
+			<?= anchor('admin/users/create', lang('index_create_user_link'), 'class="btn btn-primary"')?>  
+			<?= anchor('admin/groups/create', lang('index_create_group_link'), 'class="btn btn-primary"')?>
+			<a class="btn btn-primary" href="<?= site_url('admin/change_password') ?>">new password</a>
 		</div>
 	</div>
 
