@@ -1,6 +1,22 @@
+.logo, .navbar, .user-header, .sidebar-toggle, .main-footer, .bg-marine
+{
+    background-color: #222d32!important;
+    color: white;
+}
+
+.box
+{
+    border-top-color: #44535a;
+}
+
+.logo-lg-pefix, .logo-mini-pefix
+{
+    color: #367fa9;
+}
+
 thead, tfoot
 {
-    background-color: #337ab7;
+    background-color: #222d32;
     color: white;
     text-transform: uppercase;
 }
@@ -24,3 +40,5 @@ input[type='radio']
     background-image: -webkit-gradient(linear,left top,left bottom,from(#edb55c),to(#e08e0b));
 
 }
+
+

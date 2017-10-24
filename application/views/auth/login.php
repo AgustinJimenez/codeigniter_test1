@@ -27,7 +27,7 @@
   <!-- Google Font -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic">
 </head>
-<body class="hold-transition login-page">
+<body class="hold-transition login-page" style="background:  #222d32; color: white;">
 <div class="login-box">
 <?php if( isset($message) ): ?>
       <div class="alert alert-warning" id="infoMessage">
@@ -49,13 +49,12 @@
       </div>
       <div class="row">
         <div class="col-xs-8">
-          <a href="register.html" class="text-center">Register a new membership</a><br>
           <p class="">Remember me <?php echo form_checkbox('remember', '1', FALSE, 'id="remember" class="pull-right" ');?></p>
           
         </div>
         <!-- /.col -->
         <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          <button type="submit" class="btn btn-block btn-flat" style="background:  #222d32; color: white;">Sign In</button>
         </div>
         <!-- /.col -->
       </div>

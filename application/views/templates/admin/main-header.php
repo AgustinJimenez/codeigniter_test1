@@ -1,7 +1,7 @@
 <header class="main-header">
     <a href="#" class="logo">
-      <span class="logo-mini"><b>A</b>LT</span>
-      <span class="logo-lg"><b>Admin</b>LTE</span>
+      <span class="logo-mini"><b class="logo-mini-pefix">A</b>LT</span>
+      <span class="logo-lg"><b class="logo-lg-pefix">Admin</b>LTE</span>
     </a>
     <nav class="navbar navbar-static-top" role="navigation">
       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
@@ -46,7 +46,7 @@
               <!-- Menu Footer-->
               <li class="user-footer">
 
-                  <a href="<?= site_url('/auth/logout') ?>" class="btn btn-danger" style="background-color: #dd4b39!important; color: white!important;">Sign out</a>
+                  <a href="<?= site_url('/auth/logout') ?>" class="btn btn-danger btn-block" style="background-color: #dd4b39!important; color: white!important;">Sign out</a>
 
               </li>
             </ul>

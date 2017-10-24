@@ -1,6 +1,6 @@
 <?= $this->load->view('templates/admin/message', null, true); ?>
 
-<div class="box box-primary">
+<div class="box">
       <div class="box-header">
             <h1><?php echo lang('edit_group_heading');?></h1>
             <p><?php echo lang('edit_group_subheading');?></p>

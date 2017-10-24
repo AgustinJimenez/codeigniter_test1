@@ -1,6 +1,6 @@
 <?= $this->load->view('templates/admin/message', null, true); ?>
 
-      <div class="box box-primary">
+      <div class="box">
 
             <div class="box-header">      
                   <h1><?= lang('create_group_heading');?></h1>
