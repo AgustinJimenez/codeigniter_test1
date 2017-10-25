@@ -29,7 +29,7 @@
               <!-- The user image in the navbar-->
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">
-                <?= $this->ion_auth->user()->row()->username ?>
+                <?= isset($this->auth_username)?$this->auth_username:'Your Username' ?>
                 <i class="caret"></i>
               </span>
             </a>
@@ -38,15 +38,15 @@
               <li class="user-header">
                   <i class="fa fa-user-circle fa-5x" aria-hidden="true" style="color:white;"></i>
                 <p>
-                  <?= $this->ion_auth->user()->row()->last_name . " " . $this->ion_auth->user()->row()->first_name ?>
-                  <small><?= $this->ion_auth->user()->row()->email ?></small>
+                  <?= isset($this->auth_username)?$this->auth_username:'Your Username' ?>
+                  <small><?= isset($this->auth_email)?$this->auth_email:'Your Email' ?></small>
                 </p>
               </li>
               <!-- Menu Body -->
               <!-- Menu Footer-->
               <li class="user-footer">
 
-                  <a href="<?= site_url('/auth/logout') ?>" class="btn btn-danger btn-block" style="background-color: #dd4b39!important; color: white!important;">Sign out</a>
+                  <a href="<?= site_url('/admin/logout') ?>" class="btn btn-danger btn-block" style="background-color: #dd4b39!important; color: white!important;">Sign out</a>
 
               </li>
             </ul>

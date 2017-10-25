@@ -32,38 +32,87 @@
   <div class="login-logo">
     <a href="../../index2.html"><b>Admin</b>LTE</a>
   </div>
-  <!-- /.login-logo -->
-  <div class="login-box-body">
-  <div id="infoMessage"><?php echo $message;?></div>
-    <p class="login-box-msg" id="infoMessage">Sign in to start your session</p>
+  <?php if( ! isset( $on_hold_message ) ):?>
+  
+    <?php if( isset( $login_error_mesg ) ):?>
+      <div style="border:1px solid red;">
+        <p class="login-box-msg">
+          <?= 'Login Error #' . $this->authentication->login_errors_count . '/' . config_item('max_allowed_attempts') . ': Invalid Username, Email Address, or Password.' ?>
+        </p>
+        <p class="login-box-msg">
+          Username, email address and password are all case sensitive.
+        </p>
+      </div>
+    <?php endif;?>
 
-    <?= form_open("auth/login") ?>
-      <div class="form-group has-feedback">
-        <input type="email" class="form-control" name="identity" placeholder="Email">
-        <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
+    <?php if( $this->input->get(AUTH_LOGOUT_PARAM) ):?>
+
+      <div style="border:1px solid green">
+        <p class="login-box-msg">
+          You have successfully logged out.
+        </p>
       </div>
-      <div class="form-group has-feedback">
-        <input type="password" class="form-control" name="password" placeholder="Password">
-        <span class="glyphicon glyphicon-lock form-control-feedback"></span>
-      </div>
-      <div class="row">
-        <div class="col-xs-8">
-          <a href="register.html" class="text-center">Register a new membership</a>
-          <?php echo form_checkbox('remember', '1', FALSE, 'id="remember"');?>
+
+    <?php endif;?>
+    <div class="login-box-body">
+
+      <?= form_open($login_url , ['class' => 'std-form']) ?>
+
+        <div class="form-group has-feedback">
+          <input type="text" class="form-control" name="login_string" id="login_string" placeholder="Username or Email">
+          <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
-        <!-- /.col -->
-        <div class="col-xs-4">
-          <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
-          <p><?php echo form_submit('submit', lang('login_submit_btn'));?></p>
+
+        <div class="form-group has-feedback">
+          <input type="password" class="form-control password" id="login_pass" name="login_pass" placeholder="Password" <?php 
+        if( config_item('max_chars_for_password') > 0 )
+          echo 'maxlength="' . config_item('max_chars_for_password') . '"'; 
+      ?>  autocomplete="off" readonly="readonly" onfocus="this.removeAttribute('readonly');" >
+          <span class="glyphicon glyphicon-lock form-control-feedback"></span>
         </div>
-        <!-- /.col -->
-      </div>
-      <?= form_close() ?>
 
-    <!-- /.social-auth-links -->
-    
+        <div class="row">
+          <div class="col-xs-8">
+            <a href="register.html" class="text-center">Register a new membership</a>
+            <?php if( config_item('allow_remember_me') ): ?>
+              <label for="remember_me" class="form_label">Remember Me</label>
+              <input type="checkbox" id="remember_me" name="remember_me" value="yes" />
+            <?php endif; ?>
+            
+        <?php $link_protocol = USE_SSL ? 'https' : NULL; ?>
+        <p>
+          <a href="<?php echo site_url('examples/recover', $link_protocol); ?>">
+            Can't access your account?
+          </a>
+        </p>
+          </div>
 
-  </div>
+          <div class="col-xs-4">
+            <button type="submit" class="btn btn-primary btn-block btn-flat">Sign In</button>
+          </div>
+        </div>
+        <?= form_close() ?>
+      <?php else:?>
+        <div style="border:1px solid red;">
+          <p>
+            Excessive Login Attempts
+          </p>
+          <p>
+            You have exceeded the maximum number of failed login<br />
+            attempts that this website will allow.
+          <p>
+          <p>
+            Your access to login and account recovery has been blocked for ' . ( (int) config_item('seconds_on_hold') / 60 ) . ' minutes.
+          </p>
+          <p>
+            Please use the <a href="/examples/recover">Account Recovery</a> after ' . ( (int) config_item('seconds_on_hold') / 60 ) . ' minutes has passed,<br />
+            or contact us if you require assistance gaining access to your account.
+          </p>
+        </div>
+      
+
+    </div>
+  <?php endif;?>
   <!-- /.login-box-body -->
 </div>
 <!-- /.login-box -->

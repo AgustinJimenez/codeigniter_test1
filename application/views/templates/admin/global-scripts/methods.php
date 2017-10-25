@@ -7,7 +7,7 @@
         if( link.slice(-1) == "#" )
             prevent =  false;
 
-        else if( link.indexOf('auth/logout') >= 0 )
+        else if( link.indexOf('admin/logout') >= 0 )
             prevent =  false;
 
         return prevent;

@@ -42,7 +42,7 @@
               <a class="nav-link js-scroll-trigger" href="#about">About</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link js-scroll-trigger" href="auth/login">Admin</a>
+              <a class="nav-link js-scroll-trigger" href="admin/login">Admin</a>
             </li>
           </ul>
         </div>
