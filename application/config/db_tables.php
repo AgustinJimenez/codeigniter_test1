@@ -12,7 +12,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
  * @link        http://community-auth.com
  */
-
 // USER RELATED TABLES
 $config['user_table']                   = 'users';
 

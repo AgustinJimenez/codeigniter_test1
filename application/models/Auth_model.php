@@ -604,6 +604,38 @@ class Auth_model extends MY_Model {
 	
 	// -----------------------------------------------------------------------
 
+
+	public function get($columns = [])
+	{
+			$query = $this->db->get('entries', 10);
+			return $query->result();
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 /* End of file Auth_model.php */

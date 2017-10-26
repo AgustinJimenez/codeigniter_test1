@@ -18,10 +18,12 @@ class MY_Controller extends CI_Controller
 	/**
 	 * Class constructor
 	 */
+
 	public function __construct()
 	{
         parent::__construct();
         $this->load->helper('url');
+        $this->load->helper('var_dump');
 	}
 
 	protected function to_simple_template( $view_path, $data = [] ) 
@@ -41,6 +43,18 @@ class MY_Controller extends CI_Controller
  
         $this->load->view( $template_path, ['content' => $this->load->view( $view_path, $data, true)]); 
     } 
+
+    protected function ajax()
+    {
+        $_SERVER['HTTP_X_REQUESTED_WITH'] = isset($_SERVER['HTTP_X_REQUESTED_WITH'])?$_SERVER['HTTP_X_REQUESTED_WITH']:'';
+
+        if( $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest' )
+        {
+            show_404(); 
+            exit;
+        }
+    }
+    
 
 }
 

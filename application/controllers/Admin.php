@@ -15,7 +15,6 @@ class Admin extends Auth_Controller
 		// Form and URL helpers always loaded (just for convenience)
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->helper('var_dump');
     }
     
     public function index()
@@ -50,13 +49,6 @@ class Admin extends Auth_Controller
 
 		redirect( 'admin/login' );
 	}
-
-
-
-
-
-
-
 
 	protected function to_simple_template( $view_path, $data = [] ) 
     { 

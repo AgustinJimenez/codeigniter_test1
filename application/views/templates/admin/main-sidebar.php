@@ -17,7 +17,7 @@
           </a>
           <ul class="treeview-menu">
             <li class="active">
-              <a href="<?= site_url('admin/users') ?>">
+              <a href="<?= site_url('backend/users') ?>">
                 <i class="fa fa-users" aria-hidden="true"></i> 
                 <?= "Users List" ?>
               </a>
