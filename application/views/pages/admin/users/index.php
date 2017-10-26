@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="box-body table-responsive">
-		<table class="table table-bordered table-striped table-hover dataTable" id="table">
+		<table class="table table-bordered table-striped table-hover dataTable">
 			<thead>
                 <?php $columns = ['username', 'email', 'last login', 'level', 'actions']; ?>
 				<tr>
@@ -48,14 +48,3 @@
 <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. </p>
 
 <?= $this->load->view('templates/admin/import-datatable', null, true); ?>
-
-<script>
-	$('#table').DataTable({
-      'paging'      : true,
-      'lengthChange': false,
-      'searching'   : false,
-      'ordering'    : true,
-      'info'        : true,
-      'autoWidth'   : false
-    })
-</script>
