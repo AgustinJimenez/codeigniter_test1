@@ -7,15 +7,14 @@
         {
             parent::__construct();
             $this->ajax_only();
-
             $this->load->database();
             $this->load->model('users/user');
         }
 
         public function index()
         {
-  /*
-            for ($i=0; $i < 10000; $i++) { 
+/*
+            for ($i=1400; $i < 500000; $i++) 
                 $this->user->create([ 
                                         'user_id' => $i, 
                                         'username' => 'user-' . $i, 
@@ -30,8 +29,8 @@
                                         'created_at' => date('Y-m-d H:i:s'),
                                         'modified_at' => date('Y-m-d H:i:s') 
                                     ]);
-            }
-*/
+      */
+
 
             $users = $this->user->get( ['user_id', 'username', 'email', 'auth_level', 'last_login'] );
             $this->load->view('pages/admin/users/index', compact('users'));

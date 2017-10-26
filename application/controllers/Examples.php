@@ -189,9 +189,9 @@ class Examples extends MY_Controller
 		redirect('/');
 		// Customize this array for your user
 		$user_data = [
-			'username'   => 'agusjim',
-			'passwd'     => 'Icui4culoc.',
-			'email'      => 'agus@agus.com',
+			'username'   => 'alfredo',
+			'passwd'     => 'hielito',
+			'email'      => 'alfredo@alfredo.com',
 			'auth_level' => '9', // 9 if you want to login @ examples/index.
 		];
 
