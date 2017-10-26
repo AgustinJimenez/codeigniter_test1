@@ -1,5 +1,4 @@
 <?php
-use \Illuminate\Database\Eloquent\Model as Eloquent;
 /**
  * CodeIgniter
  *
@@ -47,7 +46,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author		EllisLab Dev Team
  * @link		https://codeigniter.com/user_guide/libraries/config.html
  */
-class CI_Model extends Eloquent{
+class CI_Model{
 
 	/**
 	 * Class constructor

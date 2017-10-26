@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="<?= base_url('assets/css/bootstrap-theme.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/font-awesome.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/ionicons.min.css') ?>">
+  <link rel="stylesheet" href="<?= base_url('assets/css/dataTables.bootstrap.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/AdminLTE.min.css') ?>">
   <link rel="stylesheet" href="<?= base_url('assets/css/skin-blue.min.css') ?>">
   

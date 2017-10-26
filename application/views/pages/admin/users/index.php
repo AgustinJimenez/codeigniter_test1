@@ -9,7 +9,7 @@
 	</div>
 
 	<div class="box-body table-responsive">
-		<table class="table table-bordered table-striped table-hover dataTable">
+		<table class="table table-bordered table-striped table-hover dataTable" id="table">
 			<thead>
                 <?php $columns = ['username', 'email', 'last login', 'level', 'actions']; ?>
 				<tr>
@@ -21,15 +21,13 @@
 			<tbody>
 				<?php foreach ($users as $user):?>
 					<tr>
-						<td><?= $user['username'] ?></td>
-						<td><?= $user['email'] ?></td>
-                        <td><?= $user['last_login'] ?></td>
-						<td><?= $user['auth_level'] ?></td>
+						<td><?= $user->username ?></td>
+						<td><?= $user->email ?></td>
+                        <td><?= $user->last_login->format('d/m/Y H:i:s') ?></td>
+						<td><?= $user->auth_level ?></td>
 						<td>
 							<div class="btn-group">
-								<a href="<?= 'users/{$user["user_id"]}/edit' ?>" class="btn btn-flat btn-primary">
-									<i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit
-								</a>
+								<?= $user->edit_button ?>
 							</div>
 						</td>
 					</tr>
@@ -48,3 +46,16 @@
 
 </div>
 <p class="footer">Page rendered in <strong>{elapsed_time}</strong> seconds. </p>
+
+<?= $this->load->view('templates/admin/import-datatable', null, true); ?>
+
+<script>
+	$('#table').DataTable({
+      'paging'      : true,
+      'lengthChange': false,
+      'searching'   : false,
+      'ordering'    : true,
+      'info'        : true,
+      'autoWidth'   : false
+    })
+</script>
