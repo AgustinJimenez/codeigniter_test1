@@ -18,11 +18,18 @@
         left_arrow_was_clicked();
     }
 
+    function show_loading()
+    {
+        TEMPLATE_CONTENT_CONTAINER.html( $(".loading-container").html() );
+    }
+
     function template_get( url )
     {
+        show_loading();
         $.get( url, function( data ) 
         {
             template_change_content_container( data, url, true);
+            $(".loading-container").hide();
         });
     }
 

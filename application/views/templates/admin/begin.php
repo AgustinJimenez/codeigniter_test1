@@ -21,6 +21,7 @@
 <div class="wrapper">
     <?= $this->load->view('templates/admin/main-header', null, true); ?>
     <?= $this->load->view('templates/admin/main-sidebar', null, true); ?>
+    <?= $this->load->view('templates/admin/loading', null, true); ?>
     <div class="content-wrapper">
      
         <?= $this->load->view('templates/admin/message', null, true); ?>
