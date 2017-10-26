@@ -1,5 +1,4 @@
 <script type='text/javascript'>
-
     function template_prevent_link( link )
     {
         prevent = true;
@@ -20,7 +19,12 @@
 
     function show_loading()
     {
-        TEMPLATE_CONTENT_CONTAINER.html( $(".loading-container").html() );
+        TEMPLATE_LOADING_MODAL.modal("show");
+    }
+
+    function hide_loading()
+    {
+        TEMPLATE_LOADING_MODAL.modal("hide");
     }
 
     function template_get( url )
@@ -29,7 +33,7 @@
         $.get( url, function( data ) 
         {
             template_change_content_container( data, url, true);
-            $(".loading-container").hide();
+            hide_loading();
         });
     }
 

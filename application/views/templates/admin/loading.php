@@ -8,10 +8,8 @@
   -webkit-animation: spin 2s linear infinite;
   animation: spin 2s linear infinite;
   position: absolute;
-  left: 50%;
-  top: 50%;
-  margin-left: -32px; /* -1 * image width / 2 */
-  margin-top: -32px; /* -1 * image height / 2 */
+  margin-top: 30%;
+  margin-left: 30%;
 }
 
 @-webkit-keyframes spin {
@@ -30,6 +28,12 @@
 }
 </style>
 
-<div class="loading-container" style="display: none;">
-  <div class="loader"></div>
+
+<!-- Modal -->
+<div class="modal" id="template-loading-modal" role="dialog">
+  <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="loader"></div>
+    </div>
+  </div>
 </div>

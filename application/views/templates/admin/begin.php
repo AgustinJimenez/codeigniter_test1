@@ -18,7 +18,7 @@
 |---------------------------------------------------------|
 -->
 <body class="hold-transition skin-blue sidebar-mini" style="background-color: #222d32;">
-<div class="wrapper">
+<div class="wrapper" >
     <?= $this->load->view('templates/admin/main-header', null, true); ?>
     <?= $this->load->view('templates/admin/main-sidebar', null, true); ?>
     <?= $this->load->view('templates/admin/loading', null, true); ?>

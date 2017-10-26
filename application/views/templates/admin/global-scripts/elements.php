@@ -7,4 +7,6 @@
     var TEMPLATE_BACK_BUTTON = $("#template-back-button");
 
     var TEMPLATE_REFRESH_BUTTON = $("#template-refresh-button");
+
+    var TEMPLATE_LOADING_MODAL = $("#template-loading-modal");
 </script>
