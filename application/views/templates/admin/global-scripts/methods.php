@@ -24,16 +24,17 @@
 
     function hide_loading()
     {
-        TEMPLATE_LOADING_MODAL.modal("hide");
+          TEMPLATE_LOADING_MODAL.modal("hide");
     }
 
     function template_get( url )
     {
-        show_loading();
+        if( template_use_loading )
+            show_loading();
+
         $.get( url, function( data ) 
         {
             template_change_content_container( data, url, true);
-            hide_loading();
         });
     }
 
@@ -131,6 +132,8 @@
             template_add_visited_url(url);
 
         set_input_autocomplete_off();
+        if( template_use_loading )
+            hide_loading();
     }
 
     function set_input_autocomplete_off()
