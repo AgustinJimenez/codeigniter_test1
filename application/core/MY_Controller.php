@@ -44,7 +44,7 @@ class MY_Controller extends CI_Controller
         $this->load->view( $template_path, ['content' => $this->load->view( $view_path, $data, true)]); 
     } 
 
-    protected function ajax()
+    protected function ajax_only()
     {
         $_SERVER['HTTP_X_REQUESTED_WITH'] = isset($_SERVER['HTTP_X_REQUESTED_WITH'])?$_SERVER['HTTP_X_REQUESTED_WITH']:'';
 

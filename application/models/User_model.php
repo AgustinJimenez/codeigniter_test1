@@ -1,9 +1,10 @@
-<?php
+<?php 
+
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class User extends CI_Model
+class User_model extends CI_Model
 {
-    public $table = 'codeigniter_test1.users';
+    protected $table = 'users';
 
     public function __construct()
     {
@@ -11,7 +12,7 @@ class User extends CI_Model
         // Your own constructor code
         
     }
-
+/*
     public function get($columns_selected = '*')
     {
         return $this->db
@@ -20,5 +21,5 @@ class User extends CI_Model
         ->get()
         ->result_array();
     }
-
+*/
 }
