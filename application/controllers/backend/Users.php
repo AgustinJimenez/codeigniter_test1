@@ -6,14 +6,12 @@
         public function __construct()
         {
             parent::__construct();
-            $this->ajax_only();
+            //$this->ajax_only();
             $this->load->database();
             $this->load->model('users/user');
-            $this->load->helper('custom_form');
-            $this->load->helper('form');
         }
 
-        public function index()
+        public function index($message = null)
         {
 /*
             for ($i=2440; $i < 500000; $i++) 
@@ -35,19 +33,53 @@
 
 
             $users = $this->user->get( ['user_id', 'username', 'email', 'auth_level', 'last_login'] );
-            $this->load->view('pages/admin/users/index', compact('users'));
+            $this->load->view('pages/admin/users/index', compact('users', 'message'));
         }
 
-        public function create_user()
+        public function create()
         {
-            $this->load->view('pages/admin/users/form', ['user' => $this->user]);
+            $this->load->helper('form');
+            $this->load->library('form_validation');
+            $this->load->helper('custom_form');
+            
+            $this->set_form_rules();
+
+            if( count($_POST) )
+                $this->user->fill( $_POST );
+
+            if ($this->form_validation->run())
+            {
+                $this->user->save();
+                $this->index(['type' => 'success', 'body' => 'User Saved Correctly']);
+            }
+            else
+            {
+                $this->load->view('pages/admin/users/form', ['user' => $this->user]);
+            }
         }
 
-        public function store($values)
+
+
+        function set_form_rules()
         {
-            dd($values)
+            $this->form_validation
+            ->set_rules
+            (
+                'email', 'Email', 'required|is_unique[users.email]',
+                [
+                    'required' => 'The email is required.',
+                    'is_unique' => 'The email already exist.'
+                ]
+            );
+
+            $this->form_validation
+            ->set_rules
+            (
+                'username', 'Username', 'min_length[5]',
+                [
+                    'min_length' => 'Username min characters = 5'
+                ]
+            );
         }
-
-
 
     }

@@ -111,7 +111,7 @@ CREATE TABLE IF NOT EXISTS `username_or_email_on_hold` (
 --
 
 CREATE TABLE IF NOT EXISTS `users` (
-  `user_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `username` varchar(12) DEFAULT NULL,
   `email` varchar(255) NOT NULL,
   `auth_level` tinyint(3) unsigned NOT NULL,

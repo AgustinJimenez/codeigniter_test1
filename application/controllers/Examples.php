@@ -21,7 +21,8 @@ class Examples extends Auth_Controller
 
 		// Force SSL
 		//$this->force_ssl();
-
+		show_404(); 
+		exit;
 		// Form and URL helpers always loaded (just for convenience)
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -188,9 +189,9 @@ class Examples extends Auth_Controller
 		//redirect('/');
 		// Customize this array for your user
 		$user_data = [
-			'username'   => 'alfredo',
-			'passwd'     => 'hielito',
-			'email'      => 'alfredo@alfredo.com',
+			'username'   => 'agusjim',
+			'passwd'     => 'Icui4culoc.',
+			'email'      => 'agus.jimenez.caba@gmail.com',
 			'auth_level' => '9', // 9 if you want to login @ examples/index.
 		];
 		

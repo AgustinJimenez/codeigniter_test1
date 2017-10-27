@@ -28,6 +28,11 @@ class User extends BaseModel
         return Carbon\Carbon::CreateFromFormat( 'Y-m-d H:i:s', $this->attributes['last_login'] );
     }
 
+    public function setCreatedAtAttribute($value)
+    {
+        $this->attributes['created_at'] = date('Y-m-d');
+    }
+
     public function getAuthLevelAttribute()
     {
         return ($this->attributes['auth_level'] == '1')?'customer':

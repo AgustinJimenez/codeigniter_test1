@@ -38,7 +38,7 @@ if ( ! function_exists('custom_input_one'))
                         $input .=
                                 '<label for="' . $name . '">' . $title . '</label>';
                     $input .=
-                            '<input placeholder="' . $title . '" name="' . $name . '" id="' . $name . '" ' . $extra_attributes . '"  value = "' . $field_value/*. old($name, $field_value)*/ . '" class="form-control ' . $name . '" type="text"> ' /*. $error_message*/ . $extras;
+                            '<input placeholder="' . $title . '" name="' . $name . '" id="' . $name . '" ' . $extra_attributes . '  value = "' . $field_value/*. old($name, $field_value)*/ . '" class="form-control ' . $name . '" type="text"> ' /*. $error_message*/ . $extras;
                         $input .= 
                         '</div>';
         if( $parent_div_class )

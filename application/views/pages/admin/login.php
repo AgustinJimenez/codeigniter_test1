@@ -59,7 +59,7 @@
       <?= form_open($login_url , ['class' => 'std-form']) ?>
 
         <div class="form-group has-feedback">
-          <input type="text" class="form-control" name="login_string" id="login_string" placeholder="Username or Email">
+          <input type="text" class="form-control" name="login_string" id="login_string" placeholder="Username or Email" autocomplete="off">
           <span class="glyphicon glyphicon-envelope form-control-feedback"></span>
         </div>
 
