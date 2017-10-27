@@ -12,8 +12,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
  * @license     BSD - http://www.opensource.org/licenses/BSD-3-Clause
  * @link        http://community-auth.com
  */
-
-class Examples extends MY_Controller
+require_once APPPATH . 'third_party/community_auth/core/Auth_Controller.php';
+class Examples extends Auth_Controller
 {
 	public function __construct()
 	{
@@ -25,7 +25,6 @@ class Examples extends MY_Controller
 		// Form and URL helpers always loaded (just for convenience)
 		$this->load->helper('url');
 		$this->load->helper('form');
-		$this->load->helper('var_dump');
 	}
 
 	// -----------------------------------------------------------------------
@@ -186,7 +185,7 @@ class Examples extends MY_Controller
 	 */
 	public function create_user()
 	{
-		redirect('/');
+		//redirect('/');
 		// Customize this array for your user
 		$user_data = [
 			'username'   => 'alfredo',
@@ -194,6 +193,7 @@ class Examples extends MY_Controller
 			'email'      => 'alfredo@alfredo.com',
 			'auth_level' => '9', // 9 if you want to login @ examples/index.
 		];
+		
 
 		$this->is_logged_in();
 
