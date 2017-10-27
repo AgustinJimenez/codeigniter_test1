@@ -23,7 +23,7 @@
 					<tr>
 						<td><?= $user->username ?></td>
 						<td><?= $user->email ?></td>
-                        <td><?= $user->last_login->format('d/m/Y H:i:s') ?></td>
+                        <td><?= $user->last_login?$user->last_login->format('d/m/Y H:i:s'):'' ?></td>
 						<td><?= $user->auth_level ?></td>
 						<td>
 							<div class="btn-group">

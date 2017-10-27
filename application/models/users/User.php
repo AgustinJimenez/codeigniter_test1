@@ -25,7 +25,8 @@ class User extends BaseModel
     
     public function getLastLoginAttribute()
     {
-        return Carbon\Carbon::CreateFromFormat( 'Y-m-d H:i:s', $this->attributes['last_login'] );
+        return $this->attributes['last_login']?Carbon\Carbon::CreateFromFormat( 'Y-m-d H:i:s', $this->attributes['last_login'] ):null;
+
     }
 
     public function setCreatedAtAttribute($value)
