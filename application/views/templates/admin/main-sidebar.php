@@ -21,7 +21,7 @@
                 <i class="fa fa-users" aria-hidden="true"></i> 
                 <?= "Users List" ?>
               </a>
-              <a href="<?= site_url('admin/users/create') ?>">
+              <a href="<?= site_url('backend/users/create_user') ?>">
                 <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 <?= "Create User" ?>
               </a>

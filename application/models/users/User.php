@@ -43,4 +43,10 @@ class User extends BaseModel
                     <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit
                 </a>';
     }
+
+    public function getGetAllAuthsLevelsAttribute()
+    {
+        return ['9' => 'admin', '6' => 'manager', '1' => 'customer'];
+    }
+
 }

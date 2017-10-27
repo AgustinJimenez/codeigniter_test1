@@ -9,12 +9,14 @@
             $this->ajax_only();
             $this->load->database();
             $this->load->model('users/user');
+            $this->load->helper('custom_form');
+            $this->load->helper('form');
         }
 
         public function index()
         {
 /*
-            for ($i=1400; $i < 500000; $i++) 
+            for ($i=2440; $i < 500000; $i++) 
                 $this->user->create([ 
                                         'user_id' => $i, 
                                         'username' => 'user-' . $i, 
@@ -36,7 +38,15 @@
             $this->load->view('pages/admin/users/index', compact('users'));
         }
 
+        public function create_user()
+        {
+            $this->load->view('pages/admin/users/form', ['user' => $this->user]);
+        }
 
+        public function store($values)
+        {
+            dd($values)
+        }
 
 
 
