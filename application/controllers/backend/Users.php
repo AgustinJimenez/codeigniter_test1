@@ -31,7 +31,6 @@
                                     ]);
       */
 
-
             $users = $this->user->get( ['user_id', 'username', 'email', 'auth_level', 'last_login'] );
             $this->load->view('pages/admin/users/index', compact('users', 'message'));
         }

@@ -20,13 +20,18 @@ class User extends BaseModel
         'passwd_modified_at', 
         'last_login',
         'created_at',
-        'modified_at'
+        'updated_at'
     ];
     
     public function getLastLoginAttribute()
     {
         return $this->attributes['last_login']?Carbon\Carbon::CreateFromFormat( 'Y-m-d H:i:s', $this->attributes['last_login'] ):null;
 
+    }
+
+    public function setPasswdAttribute($value)
+    {
+        $this->attributes['passwd'] = $this->hash_passwd($value);
     }
 
     public function setCreatedAtAttribute($value)
@@ -54,5 +59,23 @@ class User extends BaseModel
     {
         return ['9' => 'admin', '6' => 'manager', '1' => 'customer'];
     }
+
+    public function hash_passwd( $password, $random_salt = '' )
+	{
+		// If no salt provided for older PHP versions, make one
+		if( ! is_php('5.5') && empty( $random_salt ) )
+			$random_salt = $this->random_salt();
+
+		// PHP 5.5+ uses new password hashing function
+		if( is_php('5.5') ){
+			return password_hash( $password, PASSWORD_BCRYPT, ['cost' => 11] );
+		}
+
+		// PHP < 5.5 uses crypt
+		else
+		{
+			return crypt( $password, '$2y$10$' . $random_salt );
+		}
+	}
 
 }

@@ -597,7 +597,7 @@ class Auth_model extends MY_Model {
 		{
 			$this->db->query('
 				DELETE FROM `' . $this->db_table('auth_sessions_table') . '` 
-				WHERE modified_at < CURDATE() - INTERVAL ' . config_item('sess_expiration') . ' SECOND
+				WHERE updated_at < CURDATE() - INTERVAL ' . config_item('sess_expiration') . ' SECOND
 			');
 		}
 	}

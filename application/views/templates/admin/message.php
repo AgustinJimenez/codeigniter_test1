@@ -1,9 +1,11 @@
 <?php  
     if( !isset($message) )
         $message = '';
-    $message = isset($message['body'])?$message['body']:!empty($message)?$message:'';
-    $message .= function_exists('validation_errors')?validation_errors():'';
+
     $type = isset($message['type'])?$message['type']:'danger';
+    $message = isset($message['body']) ? $message['body'] : ( !empty($message)?$message:'' );
+    $message .= function_exists('validation_errors')?validation_errors():'';
+    
 ?>
 
 <?php if( !empty($message) ): ?>

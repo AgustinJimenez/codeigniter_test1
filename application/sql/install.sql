@@ -44,7 +44,7 @@ CREATE TABLE IF NOT EXISTS `auth_sessions` (
   `id` varchar(128) NOT NULL,
   `user_id` int(10) unsigned NOT NULL,
   `login_time` datetime DEFAULT NULL,
-  `modified_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   `ip_address` varchar(45) NOT NULL,
   `user_agent` varchar(60) DEFAULT NULL,
   PRIMARY KEY (`id`)
@@ -119,10 +119,10 @@ CREATE TABLE IF NOT EXISTS `users` (
   `passwd` varchar(60) NOT NULL,
   `passwd_recovery_code` varchar(60) DEFAULT NULL,
   `passwd_recovery_date` datetime DEFAULT NULL,
-  `passwd_modified_at` datetime DEFAULT NULL,
+  `passwd_updated_at` datetime DEFAULT NULL,
   `last_login` datetime DEFAULT NULL,
-  `created_at` datetime NOT NULL,
-  `modified_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `created_at` timestamp DEFAULT CURRENT_TIMESTAMP,
+  `updated_at` timestamp DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   PRIMARY KEY (`user_id`),
   UNIQUE KEY `username` (`username`),
   UNIQUE KEY `email` (`email`)
@@ -131,7 +131,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 -- --------------------------------------------------------
 
 --
--- Trigger updates passwd_modified_at field if passwd modified
+-- Trigger updates passwd_updated_at field if passwd modified
 --
 
 delimiter $$
@@ -141,7 +141,7 @@ CREATE TRIGGER ca_passwd_trigger BEFORE UPDATE ON users
 FOR EACH ROW
 BEGIN
     IF ((NEW.passwd <=> OLD.passwd) = 0) THEN
-        SET NEW.passwd_modified_at = NOW();
+        SET NEW.passwd_updated_at = NOW();
     END IF;
 END;$$
 delimiter ;
