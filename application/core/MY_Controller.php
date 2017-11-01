@@ -23,6 +23,7 @@ class MY_Controller extends CI_Controller
 	{
         parent::__construct();
         $this->load->helper('url');
+        
 	}
 
 	protected function to_simple_template( $view_path, $data = [] ) 

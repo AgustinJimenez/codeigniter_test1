@@ -21,8 +21,8 @@ class Examples extends Auth_Controller
 
 		// Force SSL
 		//$this->force_ssl();
-	show_404(); 
-	exit;
+	//show_404(); 
+	//exit;
 		// Form and URL helpers always loaded (just for convenience)
 		$this->load->helper('url');
 		$this->load->helper('form');
@@ -188,17 +188,18 @@ class Examples extends Auth_Controller
 	{
 		//redirect('/');
 		// Customize this array for your user
-		/*
-		$user_data = [
+		
+		$user_data = 
+		[
+			'user_id' => '1',
 			'username'   => 'agusjim',
 			'passwd'     => 'Icui4culoc.',
 			'email'      => 'agus.jimenez.caba@gmail.com',
 			'auth_level' => '9', // 9 if you want to login @ examples/index.
 		];
-		*/
+		
 
 		$this->is_logged_in();
-
 		echo $this->load->view('examples/page_header', '', TRUE);
 
 		// Load resources
@@ -253,7 +254,7 @@ class Examples extends Auth_Controller
 		if( $this->form_validation->run() )
 		{
 			$user_data['passwd']     = $this->authentication->hash_passwd($user_data['passwd']);
-			$user_data['user_id']    = $this->examples_model->get_unused_id();
+			//$user_data['user_id']    = $this->examples_model->get_unused_id();
 			$user_data['created_at'] = date('Y-m-d H:i:s');
 
 			// If username is not used, it must be entered into the record as NULL

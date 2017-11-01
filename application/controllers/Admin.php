@@ -15,10 +15,13 @@ class Admin extends Auth_Controller
 		// Form and URL helpers always loaded (just for convenience)
 		$this->load->helper('url');
 		$this->load->helper('form');
+		$this->load->library('session');
+		
     }
     
     public function index()
 	{
+		
 		if( $this->is_logged_in() and $this->require_role('admin') )
 			$this->to_admin_template( 'pages/admin/dashboard');
 		else
@@ -35,6 +38,17 @@ class Admin extends Auth_Controller
 		if( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' )
 		{
 			$this->require_min_level(1);
+			$users_data =
+			[
+				'auth_user_id' => $this->auth_user_id,
+				'auth_username' => $this->auth_username,
+				'auth_level' => $this->auth_level,
+				'auth_role' => $this->auth_role,
+				'auth_email' => $this->auth_email,
+				'acl' => $this->acl
+			];
+			$this->session->set_userdata(  $users_data );
+			//dump( $_SESSION );
 			redirect('admin');
 		}
 			
@@ -46,7 +60,7 @@ class Admin extends Auth_Controller
     public function logout()
 	{
 		$this->authentication->logout();
-
+		session_write_close();
 		redirect( 'admin/login' );
 	}
 

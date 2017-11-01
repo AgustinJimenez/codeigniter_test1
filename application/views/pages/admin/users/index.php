@@ -4,7 +4,7 @@
 	<div class="box-header">
 		<h3 class="box-title">USERS</h3>
 		<div class="pull-right">
-			<a class="btn btn-primary" href="<?= site_url('admin/change_password') ?>">CHANGE PASSWORD</a>
+			<a class="btn btn-primary" href="<?= site_url('backend/users/' . $this->session->userdata('auth_user_id') . '/change_password') ?>">CHANGE PASSWORD</a>
 		</div>
 	</div>
 

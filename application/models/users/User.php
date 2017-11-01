@@ -6,21 +6,17 @@ class User extends BaseModel
 {
     protected $table = 'users';
     protected $guarded = ['user_id'];
+    protected $primaryKey = 'user_id';
     public $timestamps  = false;
     protected $fillable = 
     [
-        'user_id',
         'username', 
         'email',
         'auth_level', 
         'banned', 
         'passwd', 
         'passwd_recovery_code',
-        'passwd_recovery_date', 
-        'passwd_modified_at', 
-        'last_login',
-        'created_at',
-        'updated_at'
+        'passwd_recovery_date'
     ];
     
     public function getLastLoginAttribute()
@@ -48,7 +44,7 @@ class User extends BaseModel
 
     public function getEditButtonAttribute()
     {
-        $edit_link = 'users/' . $this->attributes["auth_level"] . '/edit';
+        $edit_link = 'backend/users/' . $this->attributes["user_id"] . '/edit';
 
         return '<a href="' . $edit_link . '" class="btn btn-flat btn-primary">
                     <i class="fa fa-pencil" aria-hidden="true"></i>&nbsp;Edit

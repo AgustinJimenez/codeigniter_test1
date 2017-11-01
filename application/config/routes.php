@@ -53,3 +53,6 @@ $route['default_controller'] = 'welcome';
 //$route['404_override'] = '';
 //$route['translate_uri_dashes'] = FALSE;
 $route[LOGIN_PAGE] = 'admin/login';
+$route['backend/users/(:num)/edit'] = 'backend/users/edit/$1';
+$route['backend/users/(:num)/update'] = 'backend/users/update/$1';
+$route['backend/users/(:num)/change_password'] = 'backend/users/change_password/$1';
