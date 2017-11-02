@@ -16,3 +16,8 @@
         </div>
     </div>
 <?php endif;?>
+<style>
+      label.error {
+    color: red !important;
+}
+</style>

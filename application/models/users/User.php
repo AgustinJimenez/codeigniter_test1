@@ -61,17 +61,12 @@ class User extends BaseModel
 		// If no salt provided for older PHP versions, make one
 		if( ! is_php('5.5') && empty( $random_salt ) )
 			$random_salt = $this->random_salt();
-
 		// PHP 5.5+ uses new password hashing function
-		if( is_php('5.5') ){
+		if( is_php('5.5') )
 			return password_hash( $password, PASSWORD_BCRYPT, ['cost' => 11] );
-		}
-
 		// PHP < 5.5 uses crypt
 		else
-		{
 			return crypt( $password, '$2y$10$' . $random_salt );
-		}
 	}
 
 }

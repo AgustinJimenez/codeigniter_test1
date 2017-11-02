@@ -34,10 +34,11 @@ class Admin extends Auth_Controller
 		// Method should not be directly accessible
 	//if( $this->uri->uri_string() == 'admin/login')
 	//		show_404();
-
+		
 		if( strtolower( $_SERVER['REQUEST_METHOD'] ) == 'post' )
 		{
 			$this->require_min_level(1);
+			dd($this);
 			$users_data =
 			[
 				'auth_user_id' => $this->auth_user_id,

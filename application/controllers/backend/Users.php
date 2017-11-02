@@ -53,9 +53,10 @@
             if ($this->form_validation->run() and count($_POST))
             {
                 
-                $thi->user->fill( $_POST )
-                ;/*->save();
-                */$this->index(['type' => 'success', 'body' => 'User Saved Correctly']);
+                $this->user->fill( $_POST )
+                ->save();
+
+                $this->index(['type' => 'success', 'body' => 'User Saved Correctly']);
                 //redirect('/admin/users', 'refresh');
             }
             else

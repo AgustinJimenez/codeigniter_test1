@@ -49,11 +49,6 @@
                         minlength: 'Min length is five',
                         equalTo: "Password confirmation fail"
                   }
-            },
-            errorPlacement: function (error, element) 
-            {
-                  $(element).tooltipster('update', $(error).text());
-                  $(element).tooltipster('show');
             }
       });
 
