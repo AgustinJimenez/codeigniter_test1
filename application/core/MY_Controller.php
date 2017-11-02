@@ -44,11 +44,9 @@ class MY_Controller extends CI_Controller
         $this->load->view( $template_path, ['content' => $this->load->view( $view_path, $data, true)]); 
     } 
 
-    protected function ajax_only()
+    protected function ajax_only( $exceptions_list = [] )
     {
-        $_SERVER['HTTP_X_REQUESTED_WITH'] = isset($_SERVER['HTTP_X_REQUESTED_WITH'])?$_SERVER['HTTP_X_REQUESTED_WITH']:'';
-
-        if( $_SERVER['HTTP_X_REQUESTED_WITH'] !== 'XMLHttpRequest' )
+        if( !(isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : '' == 'XMLHttpRequest') and !(in_array($_SERVER['REQUEST_URI'], $exceptions_list) ? true : false) )
         {
             show_404(); 
             exit;

@@ -1,25 +1,24 @@
 <?php 
     defined('BASEPATH') or exit('No direct script access allowed');
 
-    class Users extends My_Controller
+    class Traces extends My_Controller
     {
-        protected $users;
+        protected $traces;
 
         public function __construct()
         {
             parent::__construct();
             
             //$this->ajax_only();
-            $this->load->database();
-            $this->load->model('users/user');
+            //$this->load->database();
+            //$this->load->model('users/user');
             //$this->user = $this->user_model;
             
         }
 
-        public function index($message = null)
+        public function index()
         {
-            $this->load->library('session');
-            
+            dd("here");
             //dump( $this->session->userdata(), $this->session->userdata('auth_user_id') );
 /*
             for ($i=2440; $i < 500000; $i++) 
@@ -37,12 +36,13 @@
                                         'created_at' => date('Y-m-d H:i:s'),
                                         'updated_at' => date('Y-m-d H:i:s') 
                                     ]);
-      */
-
+*/
+/*
             $users = $this->user->get( ['user_id', 'username', 'email', 'auth_level', 'last_login'] );
             $this->load->view('pages/admin/users/index', compact('users', 'message'));
+*/
         }
-
+/*
         public function create()
         {
             $this->load->helper('form');
@@ -150,5 +150,6 @@
                 ]
             );
         }
-
+*/
     }
+    
