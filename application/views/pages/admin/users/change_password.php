@@ -17,7 +17,7 @@
 
       </div>
 </div>
-<script src="<?= base_url('assets/plugins/jquery-validation/dist/jquery.validate.min.js') ?>"></script>
+<script src="<?= base_url('public/plugins/jquery-validation/dist/jquery.validate.min.js') ?>"></script>
 <script>
 
       jQuery('#form-change-password').validate

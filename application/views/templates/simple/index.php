@@ -11,15 +11,15 @@
     <title>Freelancer - Start Bootstrap Theme</title>
 
     <!-- Bootstrap core CSS -->
-    <link href="<?= base_url('assets/simple_template/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/simple_template/vendor/bootstrap/css/bootstrap.min.css') ?>" rel="stylesheet">
 
     <!-- Custom fonts for this template -->
-    <link href="<?= base_url('assets/simple_template/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
+    <link href="<?= base_url('public/simple_template/vendor/font-awesome/css/font-awesome.min.css') ?>" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 
     <!-- Custom styles for this template -->
-    <link href="<?= base_url('assets/simple_template/css/freelancer.min.css') ?>" rel="stylesheet">
+    <link href="<?= base_url('public/simple_template/css/freelancer.min.css') ?>" rel="stylesheet">
 
   </head>
 
@@ -52,7 +52,7 @@
     <!-- Header -->
     <header class="masthead">
       <div class="container">
-        <img class="img-fluid" src="<?= base_url('assets/simple_template/img/profile.png') ?>" alt="">
+        <img class="img-fluid" src="<?= base_url('public/simple_template/img/profile.png') ?>" alt="">
         <div class="intro-text">
           <span class="name">Codeigniter_test 1</span>
           <hr class="star-light">
@@ -74,7 +74,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="<?= base_url('assets/simple_template/img/portfolio/cabin.png') ?>" alt="">
+              <img class="img-fluid" src="<?= base_url('public/simple_template/img/portfolio/cabin.png') ?>" alt="">
             </a>
           </div>
           <div class="col-sm-4 portfolio-item">
@@ -84,7 +84,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="<?= base_url('assets/simple_template/img/portfolio/cake.png') ?>" alt="">
+              <img class="img-fluid" src="<?= base_url('public/simple_template/img/portfolio/cake.png') ?>" alt="">
             </a>
           </div>
           <div class="col-sm-4 portfolio-item">
@@ -94,7 +94,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="<?= base_url('assets/simple_template/img/portfolio/circus.png') ?>" alt="">
+              <img class="img-fluid" src="<?= base_url('public/simple_template/img/portfolio/circus.png') ?>" alt="">
             </a>
           </div>
           <div class="col-sm-4 portfolio-item">
@@ -104,7 +104,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="<?= base_url('assets/simple_template/img/portfolio/game.png') ?>" alt="">
+              <img class="img-fluid" src="<?= base_url('public/simple_template/img/portfolio/game.png') ?>" alt="">
             </a>
           </div>
           <div class="col-sm-4 portfolio-item">
@@ -114,7 +114,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="<?= base_url('assets/simple_template/img/portfolio/safe.png') ?>" alt="">
+              <img class="img-fluid" src="<?= base_url('public/simple_template/img/portfolio/safe.png') ?>" alt="">
             </a>
           </div>
           <div class="col-sm-4 portfolio-item">
@@ -124,7 +124,7 @@
                   <i class="fa fa-search-plus fa-3x"></i>
                 </div>
               </div>
-              <img class="img-fluid" src="<?= base_url('assets/simple_template/img/portfolio/submarine.png') ?>" alt="">
+              <img class="img-fluid" src="<?= base_url('public/simple_template/img/portfolio/submarine.png') ?>" alt="">
             </a>
           </div>
         </div>
@@ -283,7 +283,7 @@
                 <div class="modal-body">
                   <h2>Project Title</h2>
                   <hr class="star-primary">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets/simple_template/img/portfolio/cabin.png') ?>" alt="">
+                  <img class="img-fluid img-centered" src="<?= base_url('public/simple_template/img/portfolio/cabin.png') ?>" alt="">
                   <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
                     <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                   <ul class="list-inline item-details">
@@ -327,7 +327,7 @@
                 <div class="modal-body">
                   <h2>Project Title</h2>
                   <hr class="star-primary">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets/simple_template/img/portfolio/cake.png') ?>" alt="">
+                  <img class="img-fluid img-centered" src="<?= base_url('public/simple_template/img/portfolio/cake.png') ?>" alt="">
                   <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
                     <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                   <ul class="list-inline item-details">
@@ -371,7 +371,7 @@
                 <div class="modal-body">
                   <h2>Project Title</h2>
                   <hr class="star-primary">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets/simple_template/img/portfolio/circus.png') ?>" alt="">
+                  <img class="img-fluid img-centered" src="<?= base_url('public/simple_template/img/portfolio/circus.png') ?>" alt="">
                   <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
                     <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                   <ul class="list-inline item-details">
@@ -415,7 +415,7 @@
                 <div class="modal-body">
                   <h2>Project Title</h2>
                   <hr class="star-primary">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets/simple_template/img/portfolio/game.png') ?>" alt="">
+                  <img class="img-fluid img-centered" src="<?= base_url('public/simple_template/img/portfolio/game.png') ?>" alt="">
                   <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
                     <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                   <ul class="list-inline item-details">
@@ -459,7 +459,7 @@
                 <div class="modal-body">
                   <h2>Project Title</h2>
                   <hr class="star-primary">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets/simple_template/img/portfolio/safe.png') ?>" alt="">
+                  <img class="img-fluid img-centered" src="<?= base_url('public/simple_template/img/portfolio/safe.png') ?>" alt="">
                   <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
                     <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                   <ul class="list-inline item-details">
@@ -503,7 +503,7 @@
                 <div class="modal-body">
                   <h2>Project Title</h2>
                   <hr class="star-primary">
-                  <img class="img-fluid img-centered" src="<?= base_url('assets/simple_template/img/portfolio/submarine.png') ?>" alt="">
+                  <img class="img-fluid img-centered" src="<?= base_url('public/simple_template/img/portfolio/submarine.png') ?>" alt="">
                   <p>Use this area of the page to describe your project. The icon above is part of a free icon set by
                     <a href="https://sellfy.com/p/8Q9P/jV3VZ/">Flat Icons</a>. On their website, you can download their free set with 16 icons, or you can purchase the entire set with 146 icons for only $12!</p>
                   <ul class="list-inline item-details">
@@ -535,18 +535,18 @@
     </div>
 
     <!-- Bootstrap core JavaScript -->
-    <script src="<?= base_url('assets/simple_template/vendor/jquery/jquery.min.js') ?>"></script>
-    <script src="<?= base_url('assets/simple_template/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
+    <script src="<?= base_url('public/simple_template/vendor/jquery/jquery.min.js') ?>"></script>
+    <script src="<?= base_url('public/simple_template/vendor/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="<?= base_url('assets/simple_template/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
+    <script src="<?= base_url('public/simple_template/vendor/jquery-easing/jquery.easing.min.js') ?>"></script>
 
     <!-- Contact Form JavaScript -->
-    <script src="<?= base_url('assets/simple_template/js/jqBootstrapValidation.js') ?>"></script>
-    <script src="<?= base_url('assets/simple_template/js/contact_me.js') ?>"></script>
+    <script src="<?= base_url('public/simple_template/js/jqBootstrapValidation.js') ?>"></script>
+    <script src="<?= base_url('public/simple_template/js/contact_me.js') ?>"></script>
 
     <!-- Custom scripts for this template -->
-    <script src="<?= base_url('assets/simple_template/js/freelancer.min.js') ?>"></script>
+    <script src="<?= base_url('public/simple_template/js/freelancer.min.js') ?>"></script>
 
   </body>
 

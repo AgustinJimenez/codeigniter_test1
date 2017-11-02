@@ -18,7 +18,7 @@
 
         public function index()
         {
-            dd("here");
+            $this->load->view('pages/traces/index');
             //dump( $this->session->userdata(), $this->session->userdata('auth_user_id') );
 /*
             for ($i=2440; $i < 500000; $i++) 

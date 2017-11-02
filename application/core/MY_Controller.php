@@ -46,7 +46,11 @@ class MY_Controller extends CI_Controller
 
     protected function ajax_only( $exceptions_list = [] )
     {
-        if( !(isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : '' == 'XMLHttpRequest') and !(in_array($_SERVER['REQUEST_URI'], $exceptions_list) ? true : false) )
+        $request_url = explode( '/', $_SERVER['REQUEST_URI'] );
+        array_shift($request_url);
+        array_shift($request_url);
+        $request_url = implode('/', $request_url);
+        if( !(isset($_SERVER['HTTP_X_REQUESTED_WITH']) ? $_SERVER['HTTP_X_REQUESTED_WITH'] : '' == 'XMLHttpRequest') and !(in_array($request_url, $exceptions_list) ? true : false) )
         {
             show_404(); 
             exit;
