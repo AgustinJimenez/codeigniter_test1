@@ -24,15 +24,36 @@
       ({
             rules : 
             {
-                  new_password : 
+                  new_password: 
                   {
-                        minlength : 5
+                        required: true,
+                        minlength: 5
                   },
-                  confirm_new_password : 
+                  confirm_new_password: 
                   {
+                        required: 'Confirm New Password is required',
                         minlength : 5,
-                        equalTo : "#new_password"
+                        equalTo: "#new_password"
                   }
+            },
+            messages:
+            {
+                  new_password :
+                  {
+                        required: 'New Password is required',
+                        minlength: 'Min length is five'
+                  },
+                  confirm_new_password: 
+                  {
+                        required: 'Confirm New Password is required',
+                        minlength: 'Min length is five',
+                        equalTo: "Password confirmation fail"
+                  }
+            },
+            errorPlacement: function (error, element) 
+            {
+                  $(element).tooltipster('update', $(error).text());
+                  $(element).tooltipster('show');
             }
       });
 
