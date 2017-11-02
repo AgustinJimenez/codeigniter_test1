@@ -41,7 +41,7 @@
             // down arrow
         }
         else if (e.keyCode == '37') {
-            left_arrow_was_clicked();
+            //left_arrow_was_clicked();
         }
         else if (e.keyCode == '39') {
         // right arrow

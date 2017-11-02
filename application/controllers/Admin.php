@@ -13,6 +13,7 @@ class Admin extends MY_Controller
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
 		$this->lang->load('auth');
+		$this->session->set_flashdata('message', null);
 	}
 
 	// redirect if needed, otherwise display the user list
@@ -77,7 +78,7 @@ class Admin extends MY_Controller
 				//if the login is successful
 				//redirect them back to the home page
 				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				redirect('/', 'refresh');
+				redirect('/admin', 'refresh');
 			}
 			else
 			{
@@ -354,19 +355,16 @@ class Admin extends MY_Controller
 	public function activate($id, $code=false)
 	{
 		if ($code !== false)
-		{
 			$activation = $this->ion_auth->activate($id, $code);
-		}
 		else if ($this->ion_auth->is_admin())
-		{
 			$activation = $this->ion_auth->activate($id);
-		}
 
 		if ($activation)
 		{
 			// redirect them to the auth page
 			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			redirect("auth", 'refresh');
+			$this->users();
+
 		}
 		else
 		{
@@ -380,11 +378,9 @@ class Admin extends MY_Controller
 	public function deactivate($id = NULL)
 	{
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
-		{
 			// redirect them to the home page because they must be an administrator to view this
 			return show_error('You must be an administrator to view this page.');
-		}
-
+		
 		$id = (int) $id;
 
 		$this->load->library('form_validation');
@@ -406,19 +402,19 @@ class Admin extends MY_Controller
 			{
 				// do we have a valid request?
 				if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id'))
-				{
 					show_error($this->lang->line('error_csrf'));
-				}
-
 				// do we have the right userlevel?
 				if ($this->ion_auth->logged_in() && $this->ion_auth->is_admin())
 				{
+					$this->session->set_flashdata('message', 'Account desactivated');	
 					$this->ion_auth->deactivate($id);
 				}
+					
 			}
-
+				
+					
 			// redirect them back to the auth page
-			redirect('auth', 'refresh');
+			$this->users();
 		}
 	}
 
@@ -579,9 +575,6 @@ class Admin extends MY_Controller
 				if ($this->input->post('password'))
 					$data['password'] = $this->input->post('password');
 				
-
-
-
 				// Only allow updating groups if user is admin
 				if ($this->ion_auth->is_admin())
 				{
@@ -604,12 +597,13 @@ class Admin extends MY_Controller
 			    {
 			    	// redirect them back to the admin page if admin, or to the base url if non admin
 				    $this->session->set_flashdata('message', $this->ion_auth->messages() );
-				    if ($this->ion_auth->is_admin())
+					if ($this->ion_auth->is_admin())
+					{
 						$this->users();
+						return;
+					}
 					else
 						redirect('/', 'refresh');
-					
-
 			    }
 			    else
 			    {
@@ -728,6 +722,7 @@ class Admin extends MY_Controller
 		if(!$id || empty($id))
 		{
 			$this->users();
+			return;
 		}
 
 		$this->data['title'] = $this->lang->line('edit_group_title');
@@ -735,6 +730,7 @@ class Admin extends MY_Controller
 		if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
 		{
 			$this->users();
+			return;
 		}
 
 		$group = $this->ion_auth->group($id)->row();
@@ -757,6 +753,7 @@ class Admin extends MY_Controller
 					$this->session->set_flashdata('message', $this->ion_auth->errors());
 				}
 				$this->users();
+				return;
 			}
 		}
 

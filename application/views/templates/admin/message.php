@@ -2,7 +2,7 @@
     if( !isset($message) )
         $message = '';
 
-    $type = isset($message['type'])?$message['type']:'danger';
+    $type = isset($message['type'])?$message['type']:' btn-github';
     $message = isset($message['body']) ? $message['body'] : ( !empty($message)?$message:'' );
     $message .= function_exists('validation_errors')?validation_errors():'';
     
