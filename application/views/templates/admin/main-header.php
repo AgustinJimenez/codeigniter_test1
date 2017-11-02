@@ -29,7 +29,7 @@
               <!-- The user image in the navbar-->
               <!-- hidden-xs hides the username on small devices so only the image appears. -->
               <span class="hidden-xs">
-                <?= isset( $this->session ) ? $this->session->userdata('auth_username') : 'Your Username' ?>
+                <?= isset( $this->session ) ? $this->session->userdata['identity'] : 'Your Username' ?>
                 <i class="caret"></i>
               </span>
             </a>
@@ -38,8 +38,8 @@
               <li class="user-header">
                   <i class="fa fa-user-circle fa-5x" aria-hidden="true" style="color:white;"></i>
                 <p>
-                  <?= isset( $this->session ) ? $this->session->userdata('auth_username') : 'Your Username' ?>
-                  <small><?= isset( $this->session ) ? $this->session->userdata('auth_email') : 'Your Email' ?></small>
+                  <?= isset( $this->session ) ? $this->session->userdata['identity'] : 'Your Username' ?>
+                  <small><?= isset( $this->session ) ? $this->session->userdata['email'] : 'Your Email' ?></small>
                 </p>
               </li>
               <!-- Menu Body -->

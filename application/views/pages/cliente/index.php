@@ -1,1 +1,0 @@
-<p>THIS IS CLIENTE INDEX</p>

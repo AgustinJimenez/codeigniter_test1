@@ -17,15 +17,15 @@
           </a>
           <ul class="treeview-menu">
             <li class="active">
-              <a href="<?= site_url('backend/users') ?>">
+              <a href="<?= site_url('admin/users') ?>">
                 <i class="fa fa-users" aria-hidden="true"></i> 
                 <?= "Users List" ?>
               </a>
-              <a href="<?= site_url('backend/users/create') ?>">
+              <a href="<?= site_url('admin/create_user') ?>">
                 <i class="fa fa-user-plus" aria-hidden="true"></i> 
                 <?= "Create User" ?>
               </a>
-              <a href="<?= site_url('admin/groups/create') ?>">
+              <a href="<?= site_url('admin/create_group') ?>">
                 <i class="fa fa-users" aria-hidden="true"></i> 
                 <?= "Create Group" ?>
               </a>
