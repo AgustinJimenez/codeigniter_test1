@@ -18,12 +18,13 @@ class MY_Controller extends CI_Controller
 	/**
 	 * Class constructor
 	 */
+    protected $extra_js = [];
+    protected $extra_css = [];
 
 	public function __construct()
 	{
         parent::__construct();
-        $this->load->helper('url');
-        
+        $this->load->helper('url');   
 	}
 
 	protected function to_simple_template( $view_path, $data = [] ) 
@@ -56,8 +57,39 @@ class MY_Controller extends CI_Controller
             exit;
         }
     }
-    
 
+    protected function add_js( $path_to_file = null )
+    {
+        if( !isset($this->load->extra_js) )
+            $this->load->extra_js = [];
+
+        $this->add_file( $path_to_file , 'js' );
+    }
+
+    protected function add_css( $path_to_file = null )
+    {
+        if( !isset($this->load->extra_css) )
+            $this->load->extra_css = [];
+
+        $this->add_file( $path_to_file , 'css' );
+    }
+    
+    protected function add_file( $path_to_file = null, $type = 'js' )
+    {
+        if( is_array($path_to_file) )
+            if( $type == 'js' )
+                foreach ($path_to_file as $path) 
+                    array_push( $this->load->extra_js , $path );
+            else
+                foreach ($path_to_file as $path)
+                    array_push( $this->load->extra_css , $path );
+        else
+            if( $type == 'js' )
+                array_push( $this->load->extra_js , $path_to_file );
+            else
+                array_push( $this->load->extra_css , $path_to_file );
+
+    }
 }
 
 /* End of file MY_Controller.php */

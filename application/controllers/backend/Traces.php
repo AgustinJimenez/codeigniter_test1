@@ -18,6 +18,9 @@
 
         public function index()
         {
+            
+            //$this->add_css('public/css/leaflet.css');
+            //$this->add_js('public/js/leaflet.js');
             $this->load->view('pages/traces/index');
             //dump( $this->session->userdata(), $this->session->userdata('auth_user_id') );
 /*

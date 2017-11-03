@@ -14,6 +14,33 @@ class Admin extends MY_Controller
 		$this->ajax_only(['admin', 'admin/login']);
 		$this->lang->load('auth');
 		$this->session->set_flashdata('message', null);
+		$this->load_assets();
+	}
+
+	protected function load_assets()
+	{
+		$this->add_css
+		([
+			base_url('public/css/bootstrap.min.css'),
+			base_url('public/css/font-awesome.min.css'),
+			base_url('public/css/ionicons.min.css'),
+			base_url('public/css/dataTables.bootstrap.min.css'),
+			base_url('public/css/AdminLTE.min.css'),
+			base_url('public/css/skin-blue.min.css'),
+			base_url('public/css/app.css'),
+			'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic',
+			base_url('public/css/leaflet.css')
+		]);
+
+		$this->add_js
+		([
+			base_url('public/js/jquery.min.js'),
+			base_url('public/js/bootstrap.min.js'),
+			base_url('public/js/adminlte.min.js'),
+			base_url('public/js/fastclick.js')
+		]);
+
+
 	}
 
 	// redirect if needed, otherwise display the user list
