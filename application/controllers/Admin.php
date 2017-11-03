@@ -28,8 +28,8 @@ class Admin extends MY_Controller
 			base_url('public/css/AdminLTE.min.css'),
 			base_url('public/css/skin-blue.min.css'),
 			base_url('public/css/app.css'),
-			'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic',
-			base_url('public/css/leaflet.css')
+			'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic'
+			//base_url('public/css/leaflet.css')
 		]);
 
 		$this->add_js
@@ -37,7 +37,10 @@ class Admin extends MY_Controller
 			base_url('public/js/jquery.min.js'),
 			base_url('public/js/bootstrap.min.js'),
 			base_url('public/js/adminlte.min.js'),
-			base_url('public/js/fastclick.js')
+			base_url('public/js/fastclick.js'),
+			base_url('public/js/gmaps-api.js'),
+			base_url('public/js/gmaps.js'),
+			
 		]);
 
 

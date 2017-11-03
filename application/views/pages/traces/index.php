@@ -1,32 +1,31 @@
 
+<div class="box">
+	<div class="box-header">
+		<h3 class="box-title">Trace Form</h3>
+	</div>
 
-<style>
-#map
-{
-    height: 500px;
-    width: 1000px;
-}
-</style>
+    <div class="box-body">
+        <div class="row">
 
-<div id="map"></div>
-<script src="<?= base_url('public/js/leaflet.js') ?>"></script> 
-<script>
-    /*
-    -25.3240313 , -57.5213912, 12.5
-    */
-    var lng = -25.3240313;
-    var lat = -57.5213912;
-    var ubication = [lng, lat];
-    var zoom = 13;
-    var map = L.map('map', 
-    {
-        zoomControl: true,
-        center: ubication,
-        zoom: zoom,
-        maxZoom: 11
-    });
+            <div class="col-md-6">
+                <div id="map" style="height: 450px; width: 100%;"></div>
+            </div>
 
-   L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-        attribution: 'MapBox'
-    }).addTo(map);
-</script>
+            <div class="col-md-2" style="overflow-y: auto; max-height: 400px;">
+                <ul class="list-group" id="markers-with-index">
+                    <a href="#" class="list-group-item active"><b>Using indices</b></a>
+                </ul>
+            </div>
+            
+            <div class="col-md-2 col-md-offset-1" style="overflow-y: auto; max-height: 400px; overflow-y: ">
+                <ul class="list-group" id="markers-with-coordinates">
+                <a href="#" class="list-group-item active"><b>Using coordinates</b></a>
+                </ul>
+            </div>
+            
+        </div>
+    </div>
+
+</div>
+
+<?= $this->load->view('pages/traces/scripts/main', ['scripts_path' => 'pages/traces/scripts/'], true); ?>
