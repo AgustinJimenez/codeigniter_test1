@@ -1,0 +1,10 @@
+-open file application/config/migration.php
+-set migration_enabled to true
+-set migration_version to 0
+-excecute 'php index.php migrate' on console
+-set migration_version to 1
+-excecute 'php index.php migrate' on console
+-set migration_version to 0
+-set migration_enabled to false
+
+Username: admin@admin.com Password: password
