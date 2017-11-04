@@ -8,10 +8,12 @@
         <div class="row">
 
             <div class="col-md-6">
-                <div id="gmap"  style="height: 450px; width: 100%;"></div>
+                <div id="map"  style="height: 450px; width: 100%;"></div>
             </div>
 
-            <div class="col-md-6" style="overflow-y: auto; max-height: 400px; height: 100px" id="controls">
+            <div class="col-md-6"  id="controls">
+                <h3>Traces</h3>
+                <input type="text" class="form-control" id="control-text-area"/>
             </div>
             
         </div>

@@ -1,49 +1,96 @@
 <script type='text/javascript'>
 
-    function maps_was_clicked( event, map )
+    function initMap( v_lat, v_lng, v_zoom) 
     {
-        var index = map.markers.length;
-        var lat = event.latLng.lat();
-        var lng = event.latLng.lng();
-
-        var template = EDIT_MARKER_TEMPLATE.text();
-
-        var content = template.replace(/{{index}}/g, index).replace(/{{lat}}/g, lat).replace(/{{lng}}/g, lng);
-
-        map.addMarker
-        ({
-            lat: lat,
-            lng: lng,
-            title: 'Marker #' + index,
-            infoWindow: 
-            {
-                content : content
-            }
+        var map = new google.maps.Map(document.getElementById('map'), 
+        {
+            center: { lat: v_lat, lng: v_lng },
+            zoom: v_zoom,
+            mapTypeControl: false,
+            panControl: false,
+            zoomControl: false,
+            streetViewControl: false
         });
-    };
 
-    function marker_was_added( marker, map )
-    {
-        $('#markers-with-index')
-        .append
-        (
-            '<li class="item">'+
-                '<a href="#" class="pan-to-marker list-group-item" data-marker-index="' + map.markers.indexOf(marker) + '">' + marker.title + '</a>'
-            +'</li>'
-        );
-    
-        $('#markers-with-coordinates')
-        .append
-        (
-            '<li class="item">'
-                +'<a href="#" class="pan-to-marker list-group-item" data-marker-lat="' + marker.getPosition().lat() + '" data-marker-lng="' + marker.getPosition().lng() + '">' + marker.title + '</a>'
-            +'</li>'
-        );
-    
-    }
+        var drawingManager = new google.maps.drawing.DrawingManager
+        ({
+            drawingMode: google.maps.drawing.OverlayType.MARKER,
+            drawingControl: true,
+            drawingControlOptions: 
+            {
+                position: google.maps.ControlPosition.TOP_CENTER,
+                drawingModes: ['marker', 'polygon']
+            },
+            markerOptions: {icon: 'https://developers.google.com/maps/documentation/javascript/examples/full/images/beachflag.png'}
+        });
 
-    function edit_marker_was_submited()
-    {
+        // Create the search box and link it to the UI element.
+        var input = document.getElementById('control-text-area');
+        var searchBox = new google.maps.places.SearchBox(input);
+        //map.controls[google.maps.ControlPosition.TOP_LEFT].push(input);
+
+        // Bias the SearchBox results towards current map's viewport.
+        map.addListener('bounds_changed', function() 
+        {
+          searchBox.setBounds(map.getBounds());
+        });
+
+        var markers = [];
+        // Listen for the event fired when the user selects a prediction and retrieve
+        // more details for that place.
+        searchBox.addListener('places_changed', function() 
+        {
+          var places = searchBox.getPlaces();
+
+          if (places.length == 0) 
+            return;
+
+          // Clear out the old markers.
+          markers.forEach(function(marker) 
+          {
+            marker.setMap(null);
+          });
+          markers = [];
+
+          // For each place, get the icon, name and location.
+          var bounds = new google.maps.LatLngBounds();
+          places.forEach(function(place) 
+          {
+            if (!place.geometry) 
+            {
+              console.log("Returned place contains no geometry");
+              return;
+            }
+            
+            var icon = 
+            {
+              url: place.icon,
+              size: new google.maps.Size(71, 71),
+              origin: new google.maps.Point(0, 0),
+              anchor: new google.maps.Point(17, 34),
+              scaledSize: new google.maps.Size(25, 25)
+            };
+
+            // Create a marker for each place.
+            markers.push(new google.maps.Marker
+            ({
+              map: map,
+              icon: icon,
+              title: place.name,
+              position: place.geometry.location
+            }));
+
+            if (place.geometry.viewport) 
+              // Only geocodes have viewport.
+              bounds.union(place.geometry.viewport);
+            else 
+                bounds.extend(place.geometry.location);
+            
+          });
+          map.fitBounds(bounds);
         
-    }
+        });
+
+        drawingManager.setMap(map);
+    };
 </script>
