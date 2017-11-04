@@ -38,8 +38,10 @@ class Admin extends MY_Controller
 			base_url('public/js/bootstrap.min.js'),
 			base_url('public/js/adminlte.min.js'),
 			base_url('public/js/fastclick.js'),
-			base_url('public/js/gmaps-api.js'),
-			base_url('public/js/gmaps.js'),
+			'https://maps.googleapis.com/maps/api/js?key=AIzaSyCmlrTScJgJVqPZlyaMyKlIVd9dteM9H1c&libraries=drawing,geometry',
+			base_url('public/js/maplace.min.js')
+			//base_url('public/js/gmaps-api.js'),
+			//base_url('public/js/gmaps.js'),
 			
 		]);
 
