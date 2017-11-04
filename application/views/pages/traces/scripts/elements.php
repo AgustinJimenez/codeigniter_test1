@@ -12,6 +12,6 @@ $(
             '<input type="text" id="marker_{{index}}_lng" value="{{lng}}" />'+
         '</p>'+
         '<input type="submit" value="Update position" />'+
-    '</form>'+
+    '</form>'
 );
 </script>
