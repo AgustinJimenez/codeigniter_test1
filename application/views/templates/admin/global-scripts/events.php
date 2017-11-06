@@ -34,18 +34,29 @@
     {
         e = e || window.event;
 
-        if (e.keyCode == '38') {
+        if (e.keyCode == '38') 
+        {
             // up arrow
         }
-        else if (e.keyCode == '40') {
+        else if (e.keyCode == '40') 
+        {
             // down arrow
         }
-        else if (e.keyCode == '37') {
+        else if (e.keyCode == '37') 
+        {
             //left_arrow_was_clicked();
         }
-        else if (e.keyCode == '39') {
+        else if (e.keyCode == '39') 
+        {
         // right arrow
-        }else if (e.keyCode == 116) {
+        }
+        else if (e.keyCode == '13') 
+        {
+            //enter_was_clicked();
+        }
+        else if (e.keyCode == 116) 
+        {
+
             e.preventDefault();
             f5_was_clicked();
         }
