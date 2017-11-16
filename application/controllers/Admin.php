@@ -21,23 +21,23 @@ class Admin extends MY_Controller
 	{
 		$this->add_css
 		([
+			/*
 			base_url('public/css/bootstrap.min.css'),
 			base_url('public/css/font-awesome.min.css'),
 			base_url('public/css/ionicons.min.css'),
 			base_url('public/css/dataTables.bootstrap.min.css'),
 			base_url('public/css/AdminLTE.min.css'),
 			base_url('public/css/skin-blue.min.css'),
-			base_url('public/css/app.css'),
+			*/
+			base_url('public/css/app.min.css'),
+			base_url('public/css/app-custom.css'),
 			'https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,300italic,400italic,600italic'
 			//base_url('public/css/leaflet.css')
 		]);
 
 		$this->add_js
 		([
-			base_url('public/js/jquery.min.js'),
-			base_url('public/js/bootstrap.min.js'),
-			base_url('public/js/adminlte.min.js'),
-			base_url('public/js/fastclick.js'),
+			base_url('public/js/app.min.js'),
 			'https://maps.googleapis.com/maps/api/js?key=AIzaSyCmlrTScJgJVqPZlyaMyKlIVd9dteM9H1c&libraries=drawing,places'
 			//base_url('public/js/maplace.min.js')
 			//base_url('public/js/gmaps-api.js'),

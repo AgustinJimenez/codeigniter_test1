@@ -5,6 +5,7 @@
 		if( event.originalEvent.key == "Enter" )
 			enter_was_clicked_on_input( $(this).closest('tr') );
 	});
+
 	INPUT_ORIGIN.on('blur', function()
 	{
 		if (e.keyCode == '13' || e.keyCode == '9')
@@ -24,6 +25,11 @@
 			set_new_point( position, type = 'end', true );
 		}
 		
+	});
+
+	$("body").on('click', '.delete-waypoint', function()
+	{
+		delete_waypoint( parseInt( $(this).closest("tr").attr('waypoint') ) );
 	});
 
 </script>

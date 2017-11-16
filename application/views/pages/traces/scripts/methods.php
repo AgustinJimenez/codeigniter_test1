@@ -62,15 +62,32 @@
       var default_icon = (type=='origin') ? '<?= base_url('public/img/marker-24-blue.png')?>' : (type=='end') ? '<?= base_url('public/img/marker-24-red.png')?>' : '<?= base_url('public/img/waypoint-24-black.png')?>' ;
       var default_position = (type=='origin') ? {lat: v_lat+0.01, lng: v_lng-0.05 } : {lat: v_lat-0.01, lng: v_lng+0.05 } ;
 
-      return new google.maps.Marker
-              ({
-                position: components.position ? components.position : default_position,
-                map: map,
-                title: components.title ? components.title : default_title,
-                draggable: components.draggable ? components.draggable : true,
-                animation: components.animation ? components.animation : google.maps.Animation.DROP,
-                icon: components.icon ? components.icon : default_icon
-              });
+      var marker =  new google.maps.Marker
+      ({
+        position: components.position ? components.position : default_position,
+        map: map,
+        title: components.title ? components.title : default_title,
+        draggable: components.draggable ? components.draggable : true,
+        animation: components.animation ? components.animation : google.maps.Animation.DROP,
+        icon: components.icon ? components.icon : default_icon,
+        type: type
+      });
+
+      marker.addListener('click', marker_has_changed(marker) );
+      return marker;
+
+    }
+
+    function marker_has_changed( marker )
+    {
+      console.log();
+    }
+
+    function delete_waypoint( index )
+    {
+      waypoints[index].setMap(null);
+      waypoints.splice(index, 1);
+      refresh_waypoints_table();
     }
 
     function refresh_waypoints_table()
@@ -78,11 +95,12 @@
       var tmp_tbody_html = '';
       for (var i = 0; i < waypoints.length; i++) 
       {
-        tmp_tbody_html += '<tr>'+
+        tmp_tbody_html += '<tr waypoint="'+i+'">'+
                             '<td colspan="2">#'+(i+1)+'</td>'+
-                            '<td class="text-center" colspan="8">'+
-                              '<input type="text" class="form-control white-input waypoint waypoint-'+i+'" waypoint="'+i+'" readonly="readonly" name="trace[waypoints]['+i+'][point]" autocomplete="off" value="'+waypoints[i].position.lat()+','+waypoints[i].position.lng()+'">'+
+                            '<td class="text-center" colspan="6">'+
+                              '<input type="text" class="form-control white-input waypoint waypoint-'+i+'" waypoint="'+i+'" readonly="readonly" name="trace[waypoints]['+i+'][point]" autocomplete="off" value="'+waypoints[i].position.lat()+', '+waypoints[i].position.lng()+'">'+
                             '</td>'+
+                            '<td colspan="2"> <i class="btn btn-flat btn-danger fa fa-trash-o delete-waypoint" aria-hidden="true"></i> </td>'
                           +'</tr>';
       }
       TABLE_WAYPOINTS.children('tbody').html( tmp_tbody_html );
@@ -119,7 +137,6 @@
         {
           waypoints.push( set_marker( { position: position }, type ) );
           refresh_waypoints_table();
-          console.log('waypoint', waypoints);
         }
         
       remove_right_click_menu();
@@ -134,21 +151,30 @@
     {
       var projection;
       var right_click_menu;
+      var tmp_template = '';
       projection = map.getProjection() ;
       remove_right_click_menu();
       right_click_menu = document.createElement("div");
       right_click_menu.className  = 'right_click_menu ';
-      right_click_menu.innerHTML = "<a id='menu1' class='btn btn-primary btn-block btn-xs new-origin' lat='"+caurrentLatLng.lat()+"' lng='"+caurrentLatLng.lng()+"' onclick='set_new_point( this )'>"+
-                                      "Set as Origin"+
-                                    "<\/a>"+
 
-                                    '<a id="menu2" class="btn btn-primary btn-block btn-xs new-end" lat="'+caurrentLatLng.lat()+'" lng="'+caurrentLatLng.lng()+'" onclick="set_end_point( this )">'+
-                                      "Set as End"+
-                                    "<\/a>"+
+      if( !origin_marker ) 
+        tmp_template += 
+          "<a id='menu1' class='btn btn-primary btn-block btn-xs new-origin' lat='"+caurrentLatLng.lat()+"' lng='"+caurrentLatLng.lng()+"' onclick='set_new_point( this )'>"+
+            "Origin"+
+          "<\/a>";
 
-                                    '<a id="menu3" class="btn btn-primary btn-block btn-xs new-end" lat="'+caurrentLatLng.lat()+'" lng="'+caurrentLatLng.lng()+'" onclick="set_waypoint_point( this )">'+
-                                      "Set new Waypoint"+
-                                    "<\/a>";
+      if( !end_marker )
+        tmp_template += 
+          '<a id="menu2" class="btn btn-primary btn-block btn-xs new-end" lat="'+caurrentLatLng.lat()+'" lng="'+caurrentLatLng.lng()+'" onclick="set_end_point( this )">'+
+            "Destination"+
+          "<\/a>";
+
+      tmp_template += 
+        '<a id="menu3" class="btn btn-primary btn-block btn-xs new-end" lat="'+caurrentLatLng.lat()+'" lng="'+caurrentLatLng.lng()+'" onclick="set_waypoint_point( this )">'+
+          "Set Waypoint"+
+        "<\/a>";
+
+      right_click_menu.innerHTML = tmp_template;
       $(map.getDiv()).append(right_click_menu);
       set_menu_xy(caurrentLatLng);
       right_click_menu.style.visibility = "visible";
@@ -200,53 +226,36 @@
     */
         // Retrieve the start and end locations and create a DirectionsRequest using
         // WALKING directions.
+        var waypoints_array = [];
+        
+        if( waypoints.length )
+          for( i = 0; i < waypoints.length ; i++ )
+            waypoints_array.push
+            ({
+              location: waypoints[i].getPosition(),
+              stopover: true
+            });
+          
+          
+        
         directionsService.route
         ({
           origin: origin_marker.getPosition(),
           destination: end_marker.getPosition(),
+          waypoints: waypoints_array,
           travelMode: 'WALKING'
         }, 
         function(response, status) 
         {
+          console.log('response = ', response);
           // Route the directions and pass the response to a function to create
           // markers for each step.
           if (status === 'OK') 
-          {
             //document.getElementById('warnings-panel').innerHTML = '<b>' + response.routes[0].warnings + '</b>';
             directionsDisplay.setDirections(response);
-            showSteps(response, waypoints, stepDisplay, map);
-          } 
+            //showSteps(response, waypoints, stepDisplay, map);
           else 
             window.alert('Directions request failed due to ' + status);
-        });
-      }
-
-      function showSteps(directionResult, waypoints, stepDisplay, map) 
-      {
-        // For each step, place a marker, and add the text to the marker's infowindow.
-        // Also attach the marker to an array so we can keep track of it and remove it
-        // when calculating new routes.
-        var myRoute = directionResult.routes[0].legs[0];
-        for (var i = 0; i < myRoute.steps.length; i++) 
-        {
-          var marker = waypoints[i] = waypoints[i] || new google.maps.Marker;
-          marker.setMap(map);
-          marker.setPosition(myRoute.steps[i].start_location);
-          attachInstructionText
-          (
-            stepDisplay, marker, myRoute.steps[i].instructions, map
-          );
-        }
-      }
-
-      function attachInstructionText(stepDisplay, marker, text, map)
-      {
-        google.maps.event.addListener(marker, 'click', function() 
-        {
-          // Open an info window when the marker is clicked on, containing the text
-          // of the step.
-          stepDisplay.setContent(text);
-          stepDisplay.open(map, marker);
         });
 
       }

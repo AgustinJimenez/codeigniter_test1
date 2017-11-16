@@ -32,7 +32,7 @@
                         <div class="col-md-12 table-responsive">
                             <div class="form-group">
                                 <h3 class="text-center">WAYPOINT</h3>
-                                <input type="text" class="form-control" />
+                                <input type="text" class="form-control" id="waypoint" placeholder="Latitude, Longitude"/>
                             </div>
                             <div style="overflow-y: auto; max-height: 300px;">
                                 <table class="table table-bordered table-condensed table-responsive" id="waypoints-table">
@@ -45,7 +45,7 @@
                                     </thead>
                                     <tbody>
                                         <tr><td class="text-center">
-                                            <input type="text" class="form-control white-input" readonly="readonly" name="trace[waypoints][][point]"/>
+                                            <input type="text" class="form-control white-input" readonly="readonly"/>
                                         </td></tr>
                                     </tbody>
                                 </table>
